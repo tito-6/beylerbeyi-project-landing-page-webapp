@@ -131,20 +131,11 @@ def callback_request():
         language = request.form.get('language', 'tr')
         
         if not name or not phone:
-            error_msg = get_validation_error_message('required_name' if not name else 'required_phone', language)
-            if request.headers.get('Content-Type') == 'application/x-www-form-urlencoded':
-                # Regular form submission - redirect with message
-                flash(error_msg, 'error')
-                return redirect(url_for('index', lang=language))
-            return jsonify({'success': False, 'message': error_msg})
+            return jsonify({'success': False, 'message': get_validation_error_message('required_name' if not name else 'required_phone', language)})
         
         # Validate phone number format
         if not validate_phone(phone):
-            error_msg = get_validation_error_message('invalid_phone', language)
-            if request.headers.get('Content-Type') == 'application/x-www-form-urlencoded':
-                flash(error_msg, 'error')
-                return redirect(url_for('index', lang=language))
-            return jsonify({'success': False, 'message': error_msg})
+            return jsonify({'success': False, 'message': get_validation_error_message('invalid_phone', language)})
         
         # Create callback lead data
         lead_data = {
@@ -175,22 +166,10 @@ def callback_request():
         except Exception as e:
             logging.error(f"Callback notification error: {e}")
         
-        # Handle success response
-        success_msg = 'Geri arama talebiniz alındı. En kısa sürede arayacağız!' if language == 'tr' else 'Callback requested successfully'
-        
-        # Check if this is a regular form submission or AJAX
-        if request.headers.get('Content-Type') == 'application/x-www-form-urlencoded':
-            # Regular form submission - redirect with success message
-            flash(success_msg, 'success')
-            return redirect(url_for('index', lang=language))
-        
-        return jsonify({'success': True, 'message': success_msg})
+        return jsonify({'success': True, 'message': 'Callback requested successfully'})
         
     except Exception as e:
         logging.error(f"Callback request error: {e}")
-        if request.headers.get('Content-Type') == 'application/x-www-form-urlencoded':
-            flash('Bir hata oluştu. Lütfen tekrar deneyin.', 'error')
-            return redirect(url_for('index', lang=language))
         return jsonify({'success': False, 'message': 'Error occurred'})
 
 @app.route('/kvkk')

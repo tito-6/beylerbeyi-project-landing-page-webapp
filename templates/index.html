@@ -697,22 +697,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form id="callbackForm">
+                <form id="callbackForm" action="{{ url_for('callback_request') }}" method="POST">
                     <div class="mb-3">
-                        <input type="text" class="form-control" name="callback_name" 
+                        <input type="text" class="form-control" id="callback_name" name="callback_name" 
                                placeholder="{{ translations.callback.name }}" 
                                pattern=".*\S+.*"
                                title="Lütfen geçerli bir isim giriniz"
                                required>
                     </div>
                     <div class="mb-3">
-                        <input type="tel" class="form-control" name="callback_phone" 
+                        <input type="tel" class="form-control" id="callback_phone" name="callback_phone" 
                                placeholder="{{ translations.callback.phone }}" 
                                pattern="^(\+90|0)?[0-9]{10}$"
                                title="Lütfen geçerli bir Türk telefon numarası giriniz (örn: 0555 123 45 67)"
                                required>
                     </div>
-                    <input type="hidden" name="language" value="{{ current_lang }}">
+                    <input type="hidden" id="callback_language" name="language" value="{{ current_lang }}">
                 </form>
             </div>
             <div class="modal-footer">
