@@ -51,7 +51,6 @@ function initializeScrollEffects() {
     document.querySelectorAll('.fade-up').forEach(el => {
         observer.observe(el);
     });
-}
     
     // Animate sections on scroll
     document.querySelectorAll('.value-prop, .feature-card, .unit-card, .testimonial-card').forEach(el => {
