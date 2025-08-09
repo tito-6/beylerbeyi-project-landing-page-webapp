@@ -6,6 +6,14 @@ from flask_mail import Mail
 from sqlalchemy.orm import DeclarativeBase
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+# Try to load environment variables from .env file for local development
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    # python-dotenv not installed, continue without it
+    pass
+
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
@@ -18,7 +26,10 @@ mail = Mail()
 # create the app
 app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "luxury-real-estate-secret-key")
-app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+
+# Only add ProxyFix for production environments (Replit, Heroku, etc.)
+if os.environ.get("REPLIT_ENVIRONMENT") or os.environ.get("DYNO") or os.environ.get("RAILWAY_ENVIRONMENT"):
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 # configure the database
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///beylerbeyi.db")
