@@ -26,8 +26,11 @@
     </div>
 </nav>
 
-<!-- Hero Section -->
-<section class="hero-section">
+<!-- Ultra-Modern Hero Section with Advanced Effects -->
+<section class="hero-section morphing-bg">
+    <!-- Particle System -->
+    <div class="particles-container"></div>
+
     <div class="hero-background">
         <img src="{{ url_for('static', filename='images/placeholder.svg') }}" 
              alt="Bosphorus View" class="hero-image">
@@ -35,41 +38,35 @@
     
     <div class="hero-overlay"></div>
     
-    <div class="hero-floating-elements">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-    </div>
-    
-    <div class="container hero-content">
+    <div class="container hero-content page-transition">
         <div class="row align-items-center min-vh-100">
             <div class="col-lg-8">
-                <div class="hero-text">
-                    <h1 class="luxury-headline mb-5">
-                        {{ translations.hero.headline }}
+                <div class="hero-text stagger-container">
+                    <h1 class="luxury-headline mb-5 text-reveal premium-glow">
+                        <span>{{ translations.hero.headline }}</span>
                     </h1>
-                    <p class="hero-subtitle">
+                    <p class="hero-subtitle scroll-reveal">
                         {{ translations.hero.subheadline }}
                     </p>
                     
                     <div class="hero-ctas">
-                        <a href="#lead-form" class="btn btn-cta-primary">
+                        <a href="#lead-form" class="btn btn-cta-primary magnetic-btn liquid-effect">
                             <i class="fas fa-download me-2"></i>{{ translations.hero.cta_brochure }}
                         </a>
-                        <button type="button" class="btn btn-cta-secondary" 
+                        <button type="button" class="btn btn-cta-secondary tilt-card" 
                                 data-bs-toggle="modal" data-bs-target="#callbackModal">
                             <i class="fas fa-phone me-2"></i>{{ translations.hero.cta_callback }}
                         </button>
                     </div>
                     
                     <div class="trust-badges">
-                        <div class="trust-badge">
+                        <div class="trust-badge glass-card">
                             <i class="fas fa-star me-2"></i>{{ translations.hero.trust_badge }}
                         </div>
-                        <div class="trust-badge">
+                        <div class="trust-badge glass-card">
                             <i class="fas fa-award me-2"></i>Premium Location
                         </div>
-                        <div class="trust-badge">
+                        <div class="trust-badge glass-card">
                             <i class="fas fa-shield-alt me-2"></i>Guaranteed Investment
                         </div>
                     </div>
@@ -207,14 +204,14 @@
     </div>
 </section>
 
-<!-- Units -->
-<section class="units-section">
+<!-- Ultra-Modern Units Section -->
+<section class="units-section scroll-reveal">
     <div class="container">
-        <h2 class="section-title">{{ translations.units.title }}</h2>
-        <div class="row g-5">
+        <h2 class="section-title text-reveal premium-glow">{{ translations.units.title }}</h2>
+        <div class="row g-5 stagger-container">
             <div class="col-md-6 col-lg-3">
-                <div class="unit-card">
-                    <div class="luxury-card">
+                <div class="unit-card tilt-card">
+                    <div class="luxury-card glass-card liquid-effect">
                         <div class="unit-content">
                             <h4 class="unit-title">{{ translations.units.unit_1_1 }}</h4>
                             <p class="unit-size">65-85 {{ translations.units.size_range }}</p>
@@ -234,12 +231,12 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="unit-card">
-                    <div class="luxury-card">
+                <div class="unit-card tilt-card">
+                    <div class="luxury-card glass-card liquid-effect">
                         <div class="unit-content">
                             <h4 class="unit-title">{{ translations.units.unit_2_1 }}</h4>
                             <p class="unit-size">95-120 {{ translations.units.size_range }}</p>
-                            <div class="unit-price">{{ translations.units.from }} ₺3,800,000</div>
+                            <div class="unit-price glass-card">{{ translations.units.from }} ₺3,800,000</div>
                             <ul class="unit-features">
                                 <li>Spacious Layout</li>
                                 <li>Master Suite</li>
@@ -247,7 +244,7 @@
                                 <li>Premium Finishes</li>
                             </ul>
                             <div class="unit-cta">
-                                <a href="#lead-form" class="btn btn-luxury">
+                                <a href="#lead-form" class="btn btn-luxury magnetic-btn" onclick="selectUnit('2+1')">
                                     {{ translations.units.cta_plans }}
                                 </a>
                             </div>
@@ -256,12 +253,12 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="unit-card">
-                    <div class="luxury-card">
+                <div class="unit-card tilt-card">
+                    <div class="luxury-card glass-card liquid-effect">
                         <div class="unit-content">
                             <h4 class="unit-title">{{ translations.units.unit_3_1 }}</h4>
                             <p class="unit-size">140-170 {{ translations.units.size_range }}</p>
-                            <div class="unit-price">{{ translations.units.from }} ₺5,200,000</div>
+                            <div class="unit-price glass-card">{{ translations.units.from }} ₺5,200,000</div>
                             <ul class="unit-features">
                                 <li>Family-Sized Living</li>
                                 <li>Multiple Bedrooms</li>
@@ -270,7 +267,7 @@
                                 <li>Luxury Kitchen</li>
                             </ul>
                             <div class="unit-cta">
-                                <a href="#lead-form" class="btn btn-luxury">
+                                <a href="#lead-form" class="btn btn-luxury magnetic-btn" onclick="selectUnit('3+1')">
                                     {{ translations.units.cta_plans }}
                                 </a>
                             </div>
@@ -279,13 +276,13 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="unit-card featured-unit">
-                    <div class="luxury-card">
-                        <div class="unit-badge">Premium</div>
+                <div class="unit-card featured-unit tilt-card premium-glow">
+                    <div class="luxury-card glass-card liquid-effect">
+                        <div class="unit-badge glass-card">Premium</div>
                         <div class="unit-content">
                             <h4 class="unit-title">{{ translations.units.unit_4_1 }}</h4>
                             <p class="unit-size">200-250 {{ translations.units.size_range }}</p>
-                            <div class="unit-price">{{ translations.units.from }} ₺8,500,000</div>
+                            <div class="unit-price glass-card">{{ translations.units.from }} ₺8,500,000</div>
                             <ul class="unit-features">
                                 <li>Penthouse Level</li>
                                 <li>360° Views</li>
@@ -295,7 +292,7 @@
                                 <li>Smart Home Systems</li>
                             </ul>
                             <div class="unit-cta">
-                                <a href="#lead-form" class="btn btn-luxury">
+                                <a href="#lead-form" class="btn btn-luxury magnetic-btn" onclick="selectUnit('4+1 Penthouse')">
                                     {{ translations.units.cta_plans }}
                                 </a>
                             </div>
@@ -520,8 +517,8 @@
     </div>
 </section>
 
-<!-- Lead Form -->
-<section class="py-5 bg-dark text-light" id="lead-form">
+<!-- Ultra-Modern Lead Form Section -->
+<section class="py-5 bg-dark text-light morphing-bg scroll-reveal" id="lead-form">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
@@ -547,10 +544,11 @@
                     </div>
                 </div>
                 {% else %}
-                <!-- Lead Form -->
-                <h2 class="section-title text-center text-gold mb-5">{{ translations.lead_form.title }}</h2>
-                
-                <form method="POST" action="{{ url_for('submit_lead') }}" class="lead-form">
+                <!-- Ultra-Modern Lead Form -->
+                <div class="glass-card premium-glow liquid-effect p-5">
+                    <h2 class="section-title text-center text-gold mb-5 text-reveal">{{ translations.lead_form.title }}</h2>
+                    
+                    <form method="POST" action="{{ url_for('submit_lead') }}" class="lead-form stagger-container">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <input type="text" class="form-control luxury-input-dark" 
@@ -632,11 +630,12 @@
                     </div>
                     
                     <div class="text-center">
-                        <button type="submit" class="btn btn-gold btn-lg px-5">
+                        <button type="submit" class="btn btn-gold btn-lg px-5 magnetic-btn premium-glow liquid-effect">
                             <i class="fas fa-paper-plane me-2"></i>{{ translations.lead_form.submit }}
                         </button>
                     </div>
                 </form>
+                </div>
                 {% endif %}
             </div>
         </div>

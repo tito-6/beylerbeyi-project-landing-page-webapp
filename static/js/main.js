@@ -364,3 +364,191 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
+// ===== ULTRA-MODERN 2025 EFFECTS =====
+
+// Enhanced Lead Form Handling
+function selectUnit(unitType) {
+    const leadForm = document.getElementById('lead-form');
+    if (leadForm) {
+        const interestedUnitField = leadForm.querySelector('#interested_unit');
+        if (interestedUnitField) {
+            interestedUnitField.value = unitType;
+        }
+        
+        // Smooth scroll to the form
+        leadForm.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        // Premium highlight effect
+        leadForm.style.boxShadow = '0 0 50px rgba(201, 168, 118, 0.6)';
+        leadForm.style.transform = 'scale(1.02)';
+        setTimeout(() => {
+            leadForm.style.boxShadow = '';
+            leadForm.style.transform = '';
+        }, 2000);
+    }
+}
+
+// Initialize Modern Effects
+document.addEventListener('DOMContentLoaded', function() {
+    // Create particle system
+    createParticleSystem();
+    
+    // Initialize magnetic buttons
+    initializeMagneticButtons();
+    
+    // Initialize tilt effects
+    initializeTiltCards();
+    
+    // Initialize custom cursor
+    initializeCustomCursor();
+    
+    // Initialize enhanced navbar
+    initializeEnhancedNavbar();
+    
+    // Initialize text reveal
+    initializeTextReveal();
+    
+    // Initialize stagger animations
+    initializeStaggerAnimations();
+});
+
+// Advanced Particle System
+function createParticleSystem() {
+    const particlesContainer = document.querySelector('.particles-container');
+    if (!particlesContainer) return;
+
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Magnetic Button Effects
+function initializeMagneticButtons() {
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.05)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+}
+
+// 3D Tilt Cards
+function initializeTiltCards() {
+    document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 15;
+            const rotateY = -(x - centerX) / 15;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+}
+
+// Custom Cursor
+function initializeCustomCursor() {
+    if (isMobile()) return; // Skip on mobile
+    
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+    
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX - 10 + 'px';
+        cursor.style.top = e.clientY - 10 + 'px';
+    });
+    
+    document.querySelectorAll('a, button, .magnetic-btn').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+}
+
+// Enhanced Navbar
+function initializeEnhancedNavbar() {
+    const navbar = document.querySelector('.luxury-nav');
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 100) {
+            navbar.classList.add('scrolled');
+            navbar.style.background = 'rgba(0,0,0,0.98)';
+            navbar.style.backdropFilter = 'blur(20px)';
+        } else {
+            navbar.classList.remove('scrolled');
+            navbar.style.background = 'rgba(0,0,0,0.9)';
+            navbar.style.backdropFilter = 'none';
+        }
+        
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+}
+
+// Text Reveal Animation
+function initializeTextReveal() {
+    const textElements = document.querySelectorAll('.text-reveal');
+    
+    textElements.forEach(element => {
+        const text = element.textContent;
+        const words = text.split(' ');
+        element.innerHTML = '';
+        
+        words.forEach((word, index) => {
+            const span = document.createElement('span');
+            span.textContent = word + ' ';
+            span.style.animationDelay = `${index * 0.1}s`;
+            element.appendChild(span);
+        });
+    });
+}
+
+// Stagger Animation Observer
+function initializeStaggerAnimations() {
+    const staggerContainers = document.querySelectorAll('.stagger-container');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    staggerContainers.forEach(container => {
+        observer.observe(container);
+    });
+}
