@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Top Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark luxury-nav" id="mainNav">
+<!-- Clean Navigation -->
+<nav class="navbar navbar-expand-lg luxury-nav" id="mainNav">
     <div class="container">
         <!-- Language Switcher -->
         <div class="language-switcher">
@@ -14,11 +14,11 @@
             {% endfor %}
         </div>
         
-        <div class="nav-actions ms-auto">
+        <div class="nav-actions">
             <a href="tel:{{ translations.navigation.phone }}" class="nav-phone">
                 <i class="fas fa-phone me-2"></i>{{ translations.navigation.phone }}
             </a>
-            <a href="https://wa.me/905321234567?text=Beylerbeyi%20Residences%20hakkında%20bilgi%20almak%20istiyorum" 
+            <a href="https://wa.me/905380591052?text=Beylerbeyi%20Residences%20hakkında%20bilgi%20almak%20istiyorum" 
                class="nav-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp me-2"></i>{{ translations.navigation.whatsapp }}
             </a>
@@ -26,87 +26,82 @@
     </div>
 </nav>
 
-<!-- Ultra-Modern Hero Section with Advanced Effects -->
-<section class="hero-section morphing-bg">
-    <!-- Particle System -->
-    <div class="particles-container"></div>
-
-    <div class="hero-background">
-        <img src="{{ url_for('static', filename='images/placeholder.svg') }}" 
-             alt="Bosphorus View" class="hero-image">
+<!-- Hero Section with Auto-Sliding Gallery Images -->
+<section class="hero-section">
+    <!-- Auto-Sliding Background Gallery -->
+    <div class="hero-slider">
+        <div class="hero-slide active" style="background-image: url('{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.19.44_8848cdb2.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.19.45_c6907f3e.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.19.45_fdd4abd5.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.20.30_e218c411.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.20.34_81cc17c4.jpg') }}');"></div>
     </div>
     
-    <div class="hero-overlay"></div>
-    
-    <div class="container hero-content page-transition">
-        <div class="row align-items-center min-vh-100">
-            <div class="col-lg-8">
-                <div class="hero-text stagger-container">
-                    <h1 class="luxury-headline mb-5 text-reveal premium-glow">
-                        <span>{{ translations.hero.headline }}</span>
-                    </h1>
-                    <p class="hero-subtitle scroll-reveal">
-                        {{ translations.hero.subheadline }}
-                    </p>
-                    
-                    <div class="hero-ctas">
-                        <a href="#lead-form" class="btn btn-cta-primary magnetic-btn liquid-effect">
-                            <i class="fas fa-download me-2"></i>{{ translations.hero.cta_brochure }}
-                        </a>
-                        <button type="button" class="btn btn-cta-secondary tilt-card" 
-                                data-bs-toggle="modal" data-bs-target="#callbackModal">
-                            <i class="fas fa-phone me-2"></i>{{ translations.hero.cta_callback }}
-                        </button>
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h1 class="mb-4">{{ translations.hero.headline }}</h1>
+                <p class="hero-subtitle">{{ translations.hero.subheadline }}</p>
+                
+                <div class="hero-ctas">
+                    <a href="{{ url_for('static', filename='documents/brochures/BEYLERBEYİ PROJESİ REMAX TUBA İŞLER.pdf') }}" 
+                       target="_blank" class="btn-cta-primary">
+                        <i class="fas fa-download me-2"></i>{{ translations.hero.cta_brochure }}
+                    </a>
+                    <button type="button" class="btn-cta-secondary" 
+                            data-bs-toggle="modal" data-bs-target="#callbackModal">
+                        <i class="fas fa-phone me-2"></i>{{ translations.hero.cta_callback }}
+                    </button>
+                </div>
+                
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-star me-2 text-gold"></i>{{ translations.hero.trust_badge }}
                     </div>
-                    
-                    <div class="trust-badges">
-                        <div class="trust-badge glass-card">
-                            <i class="fas fa-star me-2"></i>{{ translations.hero.trust_badge }}
-                        </div>
-                        <div class="trust-badge glass-card">
-                            <i class="fas fa-award me-2"></i>Premium Location
-                        </div>
-                        <div class="trust-badge glass-card">
-                            <i class="fas fa-shield-alt me-2"></i>Guaranteed Investment
-                        </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-map-marker-alt me-2 text-gold"></i>Premium Location
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-alt me-2 text-gold"></i>Guaranteed Investment
                     </div>
                 </div>
             </div>
             
-            <div class="col-lg-4">
-                <div class="quick-form-card">
-                    <div class="card luxury-card">
-                        <div class="card-body p-4">
-                            <h3 class="card-title mb-4">{{ translations.quick_form.title }}</h3>
-                            <form method="POST" action="{{ url_for('submit_lead') }}" class="quick-form">
-                                <div class="mb-3">
-                                    <input type="text" class="form-control luxury-input" 
-                                           name="name" placeholder="{{ translations.quick_form.name }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="tel" class="form-control luxury-input" 
-                                           name="phone" placeholder="{{ translations.quick_form.phone }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select luxury-input" name="language">
-                                        {% for lang in supported_languages %}
-                                        <option value="{{ lang }}" {% if lang == current_lang %}selected{% endif %}>
-                                            {{ translations.languages[lang] }}
-                                        </option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" name="kvkk_consent" id="quickKvkk" required>
-                                    <label class="form-check-label small" for="quickKvkk">
-                                        {{ translations.lead_form.kvkk_consent }}
-                                    </label>
-                                </div>
-                                <button type="submit" class="btn btn-luxury w-100">
-                                    {{ translations.quick_form.submit }}
-                                </button>
-                            </form>
-                        </div>
+            <div class="col-lg-5">
+                <div class="card luxury-card">
+                    <div class="card-body p-4">
+                        <h3 class="text-center mb-4">{{ translations.quick_form.title }}</h3>
+                        <form method="POST" action="{{ url_for('submit_lead') }}" class="quick-form">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" 
+                                       name="name" placeholder="{{ translations.quick_form.name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" 
+                                       name="phone" placeholder="{{ translations.quick_form.phone }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" name="language">
+                                    {% for lang in supported_languages %}
+                                    <option value="{{ lang }}" {% if lang == current_lang %}selected{% endif %}>
+                                        {{ translations.languages[lang] }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" name="kvkk_consent" id="quickKvkk" required>
+                                <label class="form-check-label" for="quickKvkk">
+                                    <small>
+                                        <a href="{{ url_for('kvkk', lang=current_lang) }}" target="_blank" class="text-decoration-none text-primary">KVKK Aydınlatma Metni</a>'ni okudum ve kabul ediyorum.
+                                    </small>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn-cta-primary w-100">
+                                {{ translations.quick_form.submit }}
+                            </button>
+                            <input type="hidden" name="language" value="{{ current_lang }}">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -114,189 +109,152 @@
     </div>
 </section>
 
-<!-- Value Propositions -->
-<section class="value-props-section">
+<!-- Features Section -->
+<section class="section section-light">
     <div class="container">
-        <h2 class="section-title">{{ translations.value_props.title }}</h2>
-        <div class="row g-5">
-            <div class="col-md-6 col-lg-3">
-                <div class="value-prop-card text-center">
-                    <div class="value-icon">
-                        <i class="fas fa-water fa-4x text-luxury"></i>
-                    </div>
-                    <h4>{{ translations.value_props.waterfront.title }}</h4>
-                    <p>{{ translations.value_props.waterfront.desc }}</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="value-prop-card text-center">
-                    <div class="value-icon">
-                        <i class="fas fa-building fa-4x text-luxury"></i>
-                    </div>
-                    <h4>{{ translations.value_props.architecture.title }}</h4>
-                    <p>{{ translations.value_props.architecture.desc }}</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="value-prop-card text-center">
-                    <div class="value-icon">
-                        <i class="fas fa-chart-line fa-4x text-luxury"></i>
-                    </div>
-                    <h4>{{ translations.value_props.investment.title }}</h4>
-                    <p>{{ translations.value_props.investment.desc }}</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="value-prop-card text-center">
-                    <div class="value-icon">
-                        <i class="fas fa-award fa-4x text-luxury"></i>
-                    </div>
-                    <h4>{{ translations.value_props.developer.title }}</h4>
-                    <p>{{ translations.value_props.developer.desc }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Features -->
-<section class="features-section">
-    <div class="container position-relative">
         <h2 class="section-title">{{ translations.features.title }}</h2>
-        <div class="row g-5">
-            <div class="col-md-6 col-lg-4">
+        <div class="row">
+            <div class="col-md-4 mb-4">
                 <div class="feature-card">
-                    <i class="fas fa-home fa-3x"></i>
-                    <h5>{{ translations.features.smart_home }}</h5>
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="feature-title">{{ translations.features.smart_home }}</h3>
+                    <p class="feature-description">{{ translations.luxury_features.technology }}</p>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-4 mb-4">
                 <div class="feature-card">
-                    <i class="fas fa-concierge-bell fa-3x"></i>
-                    <h5>{{ translations.features.concierge }}</h5>
+                    <div class="feature-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3 class="feature-title">{{ translations.features.concierge }}</h3>
+                    <p class="feature-description">{{ translations.luxury_features.interior }}</p>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-4 mb-4">
                 <div class="feature-card">
-                    <i class="fas fa-car fa-3x"></i>
-                    <h5>{{ translations.features.parking }}</h5>
+                    <div class="feature-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="feature-title">{{ translations.features.parking }}</h3>
+                    <p class="feature-description">{{ translations.units.feature_1 }}</p>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-4 mb-4">
                 <div class="feature-card">
-                    <i class="fas fa-spa fa-3x"></i>
-                    <h5>{{ translations.features.spa }}</h5>
+                    <div class="feature-icon">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <h3 class="feature-title">{{ translations.features.spa }}</h3>
+                    <p class="feature-description">{{ translations.luxury_features.windows }}</p>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-4 mb-4">
                 <div class="feature-card">
-                    <i class="fas fa-shield-alt fa-3x"></i>
-                    <h5>{{ translations.features.security }}</h5>
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">{{ translations.features.security }}</h3>
+                    <p class="feature-description">{{ translations.value_props.architecture.desc }}</p>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-4 mb-4">
                 <div class="feature-card">
-                    <i class="fas fa-tree fa-3x"></i>
-                    <h5>{{ translations.features.gardens }}</h5>
+                    <div class="feature-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3 class="feature-title">{{ translations.features.gardens }}</h3>
+                    <p class="feature-description">{{ translations.luxury_features.windows }}</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Ultra-Modern Units Section -->
-<section class="units-section scroll-reveal">
+<!-- Property Types Section -->
+<section class="section">
     <div class="container">
-        <h2 class="section-title text-reveal premium-glow">{{ translations.units.title }}</h2>
-        <div class="row g-5 stagger-container">
-            <div class="col-md-6 col-lg-3">
-                <div class="unit-card tilt-card">
-                    <div class="luxury-card glass-card liquid-effect">
-                        <div class="unit-content">
-                            <h4 class="unit-title">{{ translations.units.unit_1_1 }}</h4>
-                            <p class="unit-size">65-85 {{ translations.units.size_range }}</p>
-                            <div class="unit-price">{{ translations.units.from }} ₺2,500,000</div>
-                            <ul class="unit-features">
-                                <li>Stunning Bosphorus Views</li>
-                                <li>Premium Location</li>
-                                <li>Modern Amenities</li>
-                            </ul>
-                            <div class="unit-cta">
-                                <a href="#lead-form" class="btn btn-luxury">
-                                    {{ translations.units.cta_plans }}
-                                </a>
-                            </div>
-                        </div>
+        <h2 class="section-title">{{ translations.units.title }}</h2>
+        <div class="row">
+            <div class="col-lg-6 col-xl-3 mb-4">
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.19.44_8848cdb2.jpg') }}" 
+                             alt="3+1 Daire" class="img-fluid">
+                    </div>
+                    <div class="property-header">
+                        <h3 class="property-title">{{ translations.units.unit_3_1 }}</h3>
+                        <p class="property-size">Net 138,5 m² • Brüt 155 m²</p>
+                    </div>
+                    <div class="property-body">
+                        <ul class="property-features">
+                            <li>{{ translations.units.feature_1 }}</li>
+                            <li>{{ translations.units.feature_2 }}</li>
+                            <li>{{ translations.units.feature_3 }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="unit-card tilt-card">
-                    <div class="luxury-card glass-card liquid-effect">
-                        <div class="unit-content">
-                            <h4 class="unit-title">{{ translations.units.unit_2_1 }}</h4>
-                            <p class="unit-size">95-120 {{ translations.units.size_range }}</p>
-                            <div class="unit-price glass-card">{{ translations.units.from }} ₺3,800,000</div>
-                            <ul class="unit-features">
-                                <li>Spacious Layout</li>
-                                <li>Master Suite</li>
-                                <li>Private Balcony</li>
-                                <li>Premium Finishes</li>
-                            </ul>
-                            <div class="unit-cta">
-                                <a href="#lead-form" class="btn btn-luxury magnetic-btn" onclick="selectUnit('2+1')">
-                                    {{ translations.units.cta_plans }}
-                                </a>
-                            </div>
-                        </div>
+            
+            <div class="col-lg-6 col-xl-3 mb-4">
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.19.45_c6907f3e.jpg') }}" 
+                             alt="4+1 Daire" class="img-fluid">
+                    </div>
+                    <div class="property-header">
+                        <h3 class="property-title">{{ translations.units.unit_4_1 }}</h3>
+                        <p class="property-size">Net 150,72 m² • Brüt 167,92 m²</p>
+                    </div>
+                    <div class="property-body">
+                        <ul class="property-features">
+                            <li>{{ translations.units.feature_1 }}</li>
+                            <li>{{ translations.units.feature_2 }}</li>
+                            <li>Doğa Manzarası</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="unit-card tilt-card">
-                    <div class="luxury-card glass-card liquid-effect">
-                        <div class="unit-content">
-                            <h4 class="unit-title">{{ translations.units.unit_3_1 }}</h4>
-                            <p class="unit-size">140-170 {{ translations.units.size_range }}</p>
-                            <div class="unit-price glass-card">{{ translations.units.from }} ₺5,200,000</div>
-                            <ul class="unit-features">
-                                <li>Family-Sized Living</li>
-                                <li>Multiple Bedrooms</li>
-                                <li>Large Terrace</li>
-                                <li>Study Room</li>
-                                <li>Luxury Kitchen</li>
-                            </ul>
-                            <div class="unit-cta">
-                                <a href="#lead-form" class="btn btn-luxury magnetic-btn" onclick="selectUnit('3+1')">
-                                    {{ translations.units.cta_plans }}
-                                </a>
-                            </div>
-                        </div>
+            
+            <div class="col-lg-6 col-xl-3 mb-4">
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.19.45_fdd4abd5.jpg') }}" 
+                             alt="5+2 Dubleks" class="img-fluid">
+                    </div>
+                    <div class="property-header">
+                        <h3 class="property-title">{{ translations.units.unit_5_2 }}</h3>
+                        <p class="property-size">Net 278,6 m² • Brüt 315,7 m²</p>
+                    </div>
+                    <div class="property-body">
+                        <ul class="property-features">
+                            <li>{{ translations.units.feature_1 }}</li>
+                            <li>{{ translations.units.feature_2 }}</li>
+                            <li>Boğaz & Doğa Manzarası</li>
+                            <li>Çatı Dubleks</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="unit-card featured-unit tilt-card premium-glow">
-                    <div class="luxury-card glass-card liquid-effect">
-                        <div class="unit-badge glass-card">Premium</div>
-                        <div class="unit-content">
-                            <h4 class="unit-title">{{ translations.units.unit_4_1 }}</h4>
-                            <p class="unit-size">200-250 {{ translations.units.size_range }}</p>
-                            <div class="unit-price glass-card">{{ translations.units.from }} ₺8,500,000</div>
-                            <ul class="unit-features">
-                                <li>Penthouse Level</li>
-                                <li>360° Views</li>
-                                <li>Private Elevator</li>
-                                <li>Rooftop Terrace</li>
-                                <li>Premium Concierge</li>
-                                <li>Smart Home Systems</li>
-                            </ul>
-                            <div class="unit-cta">
-                                <a href="#lead-form" class="btn btn-luxury magnetic-btn" onclick="selectUnit('4+1 Penthouse')">
-                                    {{ translations.units.cta_plans }}
-                                </a>
-                            </div>
-                        </div>
+            
+            <div class="col-lg-6 col-xl-3 mb-4">
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.20.30_e218c411.jpg') }}" 
+                             alt="Bahçe Dubleks" class="img-fluid">
+                    </div>
+                    <div class="property-header">
+                        <h3 class="property-title">{{ translations.units.unit_garden }}</h3>
+                        <p class="property-size">Net 245,92 m² • Brüt 277,65 m²</p>
+                    </div>
+                    <div class="property-body">
+                        <ul class="property-features">
+                            <li>{{ translations.units.feature_1 }}</li>
+                            <li>{{ translations.units.feature_2 }}</li>
+                            <li>Özel Bahçe 77,24 m²</li>
+                            <li>Bahçe Dubleks</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -304,212 +262,227 @@
     </div>
 </section>
 
-<!-- Location -->
-<section class="py-5">
+<!-- Earthquake Safety Section -->
+<section class="section section-dark">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h2 class="section-title mb-4">{{ translations.location.title }}</h2>
-                <p class="lead mb-4">{{ translations.location.description }}</p>
+            <div class="col-lg-6 mb-4">
+                <h2 class="section-title text-white">{{ translations.earthquake.title }}</h2>
+                <p class="section-subtitle text-light mb-4">{{ translations.earthquake.subtitle }}</p>
+                <p class="text-light mb-4">{{ translations.earthquake.main_feature }}</p>
                 
-                <div class="access-times">
-                    <div class="access-item d-flex align-items-center mb-3">
-                        <i class="fas fa-ship text-luxury me-3"></i>
-                        <span>{{ translations.location.access_times.pier }}</span>
+                <h4 class="text-gold mb-3">{{ translations.earthquake.isolator_title }}</h4>
+                <p class="text-light mb-4">{{ translations.earthquake.isolator_desc }}</p>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="text-white mb-3">{{ translations.earthquake.benefits.title }}</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-shield-alt text-gold me-2"></i>
+                                {{ translations.earthquake.benefits.benefit_1 }}
+                            </li>
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-chart-line text-gold me-2"></i>
+                                {{ translations.earthquake.benefits.benefit_2 }}
+                            </li>
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-home text-gold me-2"></i>
+                                {{ translations.earthquake.benefits.benefit_3 }}
+                            </li>
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-tools text-gold me-2"></i>
+                                {{ translations.earthquake.benefits.benefit_4 }}
+                            </li>
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-globe text-gold me-2"></i>
+                                {{ translations.earthquake.benefits.benefit_5 }}
+                            </li>
+                        </ul>
                     </div>
-                    <div class="access-item d-flex align-items-center mb-3">
-                        <i class="fas fa-bridge text-luxury me-3"></i>
-                        <span>{{ translations.location.access_times.bridge }}</span>
+                    <div class="col-md-6">
+                        <h5 class="text-white mb-3">{{ translations.earthquake.technology.title }}</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-cogs text-gold me-2"></i>
+                                {{ translations.earthquake.technology.tech_1 }}
+                            </li>
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-layer-group text-gold me-2"></i>
+                                {{ translations.earthquake.technology.tech_2 }}
+                            </li>
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-robot text-gold me-2"></i>
+                                {{ translations.earthquake.technology.tech_3 }}
+                            </li>
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-chart-area text-gold me-2"></i>
+                                {{ translations.earthquake.technology.tech_4 }}
+                            </li>
+                            <li class="mb-2 text-light">
+                                <i class="fas fa-certificate text-gold me-2"></i>
+                                {{ translations.earthquake.technology.tech_5 }}
+                            </li>
+                        </ul>
                     </div>
-                    <div class="access-item d-flex align-items-center mb-3">
-                        <i class="fas fa-shopping-bag text-luxury me-3"></i>
-                        <span>{{ translations.location.access_times.bagdat }}</span>
-                    </div>
+                </div>
+                
+                <div class="mt-4 p-3 bg-gold bg-opacity-10 rounded">
+                    <p class="text-gold mb-0">
+                        <i class="fas fa-award me-2"></i>
+                        {{ translations.earthquake.certification }}
+                    </p>
                 </div>
             </div>
             
             <div class="col-lg-6">
-                <div class="map-container">
-                    {% if GOOGLE_MAPS_API_KEY %}
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.5234!2d29.0387!3d41.0369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAyJzEzLjAiTiAyOcKwMDInMTkuMyJF!5e0!3m2!1sen!2str!4v1234567890"
-                        width="100%" 
-                        height="400" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                    {% else %}
-                    <div class="map-placeholder d-flex align-items-center justify-content-center bg-light" style="height: 400px;">
-                        <div class="text-center">
-                            <i class="fas fa-map-marker-alt fa-3x text-muted mb-3"></i>
-                            <p class="text-muted">Beylerbeyi, İstanbul</p>
+                <div class="earthquake-visualization">
+                    <div class="card luxury-card">
+                        <div class="card-body p-4">
+                            <h5 class="mb-3">{{ translations.earthquake.isolator_title }}</h5>
+                            <div class="seismic-diagram mb-4">
+                                <div class="building-layer">
+                                    <div class="building-icon">
+                                        <i class="fas fa-building fa-3x text-gold mb-2"></i>
+                                        <p class="small">Beylerbeyi Residences</p>
+                                    </div>
+                                </div>
+                                <div class="isolator-layer">
+                                    <div class="isolator-visual">
+                                        <div class="isolator-spring"></div>
+                                        <div class="isolator-spring"></div>
+                                        <div class="isolator-spring"></div>
+                                        <p class="small text-gold">Sismik İzolatörler</p>
+                                    </div>
+                                </div>
+                                <div class="foundation-layer">
+                                    <div class="foundation-icon">
+                                        <i class="fas fa-layer-group fa-2x text-secondary mb-2"></i>
+                                        <p class="small">Temel</p>
+                                    </div>
+                                </div>
+                                <div class="ground-wave">
+                                    <i class="fas fa-wave-square text-danger"></i>
+                                    <p class="small text-danger">Deprem Dalgaları</p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <small class="text-muted">
+                                    Sismik izolatörler deprem enerjisini emer ve yapıya iletilmesini engeller
+                                </small>
+                            </div>
                         </div>
                     </div>
-                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Investment -->
-<section class="py-5 bg-dark text-light">
+<!-- Beylerbeyi Luxury Video Section -->
+<section class="section section-dark">
     <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <h2 class="section-title text-white">{{ translations.luxury_features.title }}</h2>
+                <div class="luxury-text text-light">
+                    <p class="mb-4">{{ translations.luxury_features.interior }}</p>
+                    <p class="mb-4">{{ translations.luxury_features.technology }}</p>
+                    <p class="mb-4">{{ translations.luxury_features.windows }}</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="video-container">
+                    <video controls class="w-100 rounded-4" poster="{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.20.34_81cc17c4.jpg') }}">
+                        <source src="{{ url_for('static', filename='videos/TUGBA.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sustainability & LEED Section -->
+<section class="section section-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">{{ translations.sustainability.title }}</h2>
+            <p class="section-subtitle">{{ translations.sustainability.leed }}</p>
+        </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-title text-gold mb-5">{{ translations.investment.title }}</h2>
-                
-                <div class="row g-4 mb-5">
-                    <div class="col-md-6">
-                        <div class="investment-feature">
-                            <h4 class="text-gold">{{ translations.investment.starting_price }}</h4>
-                        </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="sustainability-card text-center">
+                    <div class="sustainability-icon">
+                        <i class="fas fa-tint text-primary"></i>
                     </div>
-                    <div class="col-md-6">
-                        <div class="investment-feature">
-                            <h5>{{ translations.investment.payment_plan }}</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="investment-feature">
-                            <h5>{{ translations.investment.rental_yield }}</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="investment-feature">
-                            <h5>{{ translations.investment.citizenship }}</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <a href="#lead-form" class="btn btn-gold btn-lg">
-                    <i class="fas fa-calculator me-2"></i>{{ translations.investment.cta_investment }}
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials -->
-<section class="py-5">
-    <div class="container">
-        <h2 class="section-title text-center mb-5">{{ translations.testimonials.title }}</h2>
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="testimonial-card text-center p-4">
-                    <div class="stars mb-3">
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                    </div>
-                    <p class="mb-3">"{{ translations.testimonials.testimonial_1 }}"</p>
-                    <small class="text-muted">- M.K.</small>
+                    <h4>Su Verimliliği</h4>
+                    <p>{{ translations.sustainability.water }}</p>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="testimonial-card text-center p-4">
-                    <div class="stars mb-3">
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="sustainability-card text-center">
+                    <div class="sustainability-icon">
+                        <i class="fas fa-bolt text-warning"></i>
                     </div>
-                    <p class="mb-3">"{{ translations.testimonials.testimonial_2 }}"</p>
-                    <small class="text-muted">- A.S.</small>
+                    <h4>Enerji Verimliliği</h4>
+                    <p>{{ translations.sustainability.energy }}</p>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="testimonial-card text-center p-4">
-                    <div class="stars mb-3">
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
-                        <i class="fas fa-star text-gold"></i>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="sustainability-card text-center">
+                    <div class="sustainability-icon">
+                        <i class="fas fa-recycle text-success"></i>
                     </div>
-                    <p class="mb-3">"{{ translations.testimonials.testimonial_3 }}"</p>
-                    <small class="text-muted">- R.T.</small>
+                    <h4>Malzemeler</h4>
+                    <p>{{ translations.sustainability.materials }}</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="sustainability-card text-center">
+                    <div class="sustainability-icon">
+                        <i class="fas fa-car-alt text-info"></i>
+                    </div>
+                    <h4>Sürdürülebilir Ulaşım</h4>
+                    <p>{{ translations.sustainability.location }}</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FAQ -->
-<section class="py-5 bg-light">
+<!-- Location Section -->
+<section class="section section-dark">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="section-title text-center mb-5">{{ translations.faq.title }}</h2>
-                
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                {{ translations.faq.q1 }}
-                            </button>
-                        </h2>
-                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                {{ translations.faq.a1 }}
-                            </div>
-                        </div>
+        <h2 class="section-title text-white">Konum & Erişim</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h3 class="text-white mb-4 text-center">Premium İstanbul Konumu</h3>
+                <p class="text-light text-center mb-5">Beylerbeyi'nin prestijli atmosferinde, Boğaz'a nazır eşsiz bir konumda yer alan projemiz, şehrin merkezi lokasyonlarına kolay erişim imkanı sunuyor.</p>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <ul class="list-unstyled">
+                            <li class="mb-3 text-light">
+                                <i class="fas fa-map-marker-alt text-gold me-3"></i>
+                                Beylerbeyi Sahili - 2 dakika yürüme mesafesi
+                            </li>
+                            <li class="mb-3 text-light">
+                                <i class="fas fa-bridge text-gold me-3"></i>
+                                Boğaziçi Köprüsü - 5 dakika araç mesafesi
+                            </li>
+                        </ul>
                     </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                {{ translations.faq.q2 }}
-                            </button>
-                        </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                {{ translations.faq.a2 }}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                {{ translations.faq.q3 }}
-                            </button>
-                        </h2>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                {{ translations.faq.a3 }}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                {{ translations.faq.q4 }}
-                            </button>
-                        </h2>
-                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                {{ translations.faq.a4 }}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                                {{ translations.faq.q5 }}
-                            </button>
-                        </h2>
-                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                {{ translations.faq.a5 }}
-                            </div>
-                        </div>
+                    <div class="col-md-6 mb-4">
+                        <ul class="list-unstyled">
+                            <li class="mb-3 text-light">
+                                <i class="fas fa-plane text-gold me-3"></i>
+                                Sabiha Gökçen Havalimanı - 45 dakika
+                            </li>
+                            <li class="mb-3 text-light">
+                                <i class="fas fa-shopping-bag text-gold me-3"></i>
+                                Zorlu Center - 20 dakika
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -517,211 +490,372 @@
     </div>
 </section>
 
-<!-- Ultra-Modern Lead Form Section -->
-<section class="py-5 bg-dark text-light morphing-bg scroll-reveal" id="lead-form">
+<!-- Bosphorus Lifestyle Section -->
+<section class="section section-light">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                {% if session.get('lead_submitted') %}
-                <!-- Success State -->
-                <div id="success" class="text-center">
-                    <div class="success-icon mb-4">
-                        <i class="fas fa-check-circle fa-5x text-gold"></i>
-                    </div>
-                    <h2 class="text-gold mb-4">{{ translations.lead_form.success_title }}</h2>
-                    <p class="lead mb-5">{{ translations.lead_form.success_message }}</p>
+        <div class="text-center mb-5">
+            <h2 class="section-title">{{ translations.investment.title }}</h2>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="lifestyle-content">
+                    <h3 class="mb-4">Masmavi Sular, Kıyıya Çarpan Dalgalar</h3>
+                    <p class="lead mb-4">{{ translations.investment.starting_price }}</p>
+                    <p class="mb-4">{{ translations.investment.payment_plan }}</p>
+                    <p class="mb-4">{{ translations.investment.rental_yield }}</p>
+                    <p class="mb-4">{{ translations.investment.citizenship }}</p>
                     
-                    <div class="success-actions">
-                        {% if session.get('lead_whatsapp') %}
-                        <a href="https://wa.me/905321234567?text=Merhaba,%20Beylerbeyi%20Residences%20için%20detaylı%20bilgi%20almak%20istiyorum." 
-                           class="btn btn-success btn-lg me-3 mb-3" target="_blank">
-                            <i class="fab fa-whatsapp me-2"></i>{{ translations.lead_form.whatsapp_button }}
-                        </a>
-                        {% endif %}
-                        <a href="/brochures/beylerbeyi.pdf" class="btn btn-gold btn-lg mb-3" target="_blank">
-                            <i class="fas fa-download me-2"></i>{{ translations.lead_form.brochure_button }}
-                        </a>
+                    <div class="luxury-features mt-4">
+                        <div class="luxury-feature mb-3">
+                            <i class="fas fa-water text-primary me-3"></i>
+                            <span>Boğaz'ın güzelliklerini yaşamak gerçek bir lüks</span>
+                        </div>
+                        <div class="luxury-feature mb-3">
+                            <i class="fas fa-city text-primary me-3"></i>
+                            <span>Mükemmel konumu ve köprüye yakınlığı</span>
+                        </div>
+                        <div class="luxury-feature mb-3">
+                            <i class="fas fa-home text-primary me-3"></i>
+                            <span>İstanbul'u özgür yaşayacaksınız</span>
+                        </div>
                     </div>
                 </div>
-                {% else %}
-                <!-- Ultra-Modern Lead Form -->
-                <div class="glass-card premium-glow liquid-effect p-5">
-                    <h2 class="section-title text-center text-gold mb-5 text-reveal">{{ translations.lead_form.title }}</h2>
-                    
-                    <form method="POST" action="{{ url_for('submit_lead') }}" class="lead-form stagger-container">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control luxury-input-dark" 
-                                   name="name" placeholder="{{ translations.lead_form.name }}" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="tel" class="form-control luxury-input-dark" 
-                                   name="phone" placeholder="{{ translations.lead_form.phone }}" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="email" class="form-control luxury-input-dark" 
-                                   name="email" placeholder="{{ translations.lead_form.email }}">
-                        </div>
-                        <div class="col-md-6">
-                            <select class="form-select luxury-input-dark" name="language">
-                                {% for lang in supported_languages %}
-                                <option value="{{ lang }}" {% if lang == current_lang %}selected{% endif %}>
-                                    {{ translations.languages[lang] }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <select class="form-select luxury-input-dark" name="unit_interest">
-                                <option value="">{{ translations.lead_form.unit_interest }}</option>
-                                <option value="1+1">{{ translations.units.unit_1_1 }}</option>
-                                <option value="2+1">{{ translations.units.unit_2_1 }}</option>
-                                <option value="3+1">{{ translations.units.unit_3_1 }}</option>
-                                <option value="4+1">{{ translations.units.unit_4_1 }}</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <select class="form-select luxury-input-dark" name="budget_range">
-                                <option value="">{{ translations.lead_form.budget_range }}</option>
-                                <option value="2-4M">₺2-4 Milyon</option>
-                                <option value="4-6M">₺4-6 Milyon</option>
-                                <option value="6-10M">₺6-10 Milyon</option>
-                                <option value="10M+">₺10 Milyon+</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <select class="form-select luxury-input-dark" name="timeline">
-                                <option value="">{{ translations.lead_form.timeline }}</option>
-                                <option value="immediate">Hemen</option>
-                                <option value="3months">3 Ay İçinde</option>
-                                <option value="6months">6 Ay İçinde</option>
-                                <option value="1year">1 Yıl İçinde</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <select class="form-select luxury-input-dark" name="best_call_time">
-                                <option value="">{{ translations.lead_form.best_call_time }}</option>
-                                <option value="morning">Sabah (09:00-12:00)</option>
-                                <option value="afternoon">Öğlen (12:00-17:00)</option>
-                                <option value="evening">Akşam (17:00-20:00)</option>
-                            </select>
+            </div>
+            <div class="col-lg-6">
+                <div class="lifestyle-image">
+                    <img src="{{ url_for('static', filename='images/gallery/WhatsApp Image 2025-02-16 at 13.20.34_81cc17c4.jpg') }}" 
+                         alt="Bosphorus View" class="img-fluid rounded-4 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lead Form Section -->
+<section class="section section-light" id="lead-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card luxury-card">
+                    <div class="card-body p-5">
+                        <h2 class="section-title mb-4">{{ translations.lead_form.title }}</h2>
+                        <form method="POST" action="{{ url_for('submit_lead') }}">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" name="name" 
+                                           placeholder="{{ translations.lead_form.name }}" 
+                                           pattern=".*\S+.*"
+                                           title="Lütfen geçerli bir isim giriniz"
+                                           required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="tel" class="form-control" name="phone" 
+                                           placeholder="{{ translations.lead_form.phone }}" 
+                                           pattern="^(\+90|0)?[0-9]{10}$"
+                                           title="Lütfen geçerli bir Türk telefon numarası giriniz (örn: 0555 123 45 67)"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" name="email" 
+                                           placeholder="{{ translations.lead_form.email }}"
+                                           pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                           title="Lütfen geçerli bir e-posta adresi giriniz (örn: ornek@email.com)">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <select class="form-select" name="unit_interest">
+                                        <option value="">İlgilendiğiniz daire tipi</option>
+                                        <option value="3+1">3+1 Daire (138,5 m²)</option>
+                                        <option value="4+1">4+1 Daire (150,72 m²)</option>
+                                        <option value="5+2">5+2 Dubleks (278,6 m²)</option>
+                                        <option value="garden">4+1 Bahçe Dubleks (245,92 m²)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" name="kvkk_consent" 
+                                       id="fullFormKvkk" required>
+                                <label class="form-check-label" for="fullFormKvkk">
+                                    <a href="{{ url_for('kvkk', lang=current_lang) }}" target="_blank" class="text-decoration-none text-primary">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin işlenmesini kabul ediyorum.
+                                </label>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-cta-primary">
+                                    {{ translations.lead_form.submit }}
+                                </button>
+                            </div>
+                            <input type="hidden" name="language" value="{{ current_lang }}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="section-title text-white">{{ translations.contact.title }}</h2>
+                    <p class="section-subtitle text-white">{{ translations.contact.subtitle }}</p>
+                </div>
+                
+                <div class="row text-center">
+                    <!-- Phone 1 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h4 class="contact-title">{{ translations.contact.phone1 }}</h4>
+                            <p class="contact-info">
+                                <a href="tel:+905380591052" class="text-decoration-none text-gold">
+                                    +90 538 059 10 52
+                                </a>
+                            </p>
                         </div>
                     </div>
                     
-                    <div class="form-checks mt-4">
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" name="whatsapp_optin" id="whatsappOpt">
-                            <label class="form-check-label" for="whatsappOpt">
-                                {{ translations.lead_form.whatsapp_optin }}
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" name="marketing_consent" id="marketingConsent">
-                            <label class="form-check-label" for="marketingConsent">
-                                {{ translations.lead_form.marketing_consent }}
-                            </label>
-                        </div>
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" name="kvkk_consent" id="kvkkConsent" required>
-                            <label class="form-check-label" for="kvkkConsent">
-                                {{ translations.lead_form.kvkk_consent }}
-                            </label>
+                    <!-- Phone 2 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4 class="contact-title">{{ translations.contact.phone2 }}</h4>
+                            <p class="contact-info">
+                                <a href="tel:+905395021058" class="text-decoration-none text-gold">
+                                    +90 539 502 10 58
+                                </a>
+                            </p>
                         </div>
                     </div>
                     
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-gold btn-lg px-5 magnetic-btn premium-glow liquid-effect">
-                            <i class="fas fa-paper-plane me-2"></i>{{ translations.lead_form.submit }}
-                        </button>
+                    <!-- WhatsApp -->
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h4 class="contact-title">WhatsApp</h4>
+                            <p class="contact-info">
+                                <a href="https://wa.me/905380591052?text=Beylerbeyi%20Residences%20hakkında%20bilgi%20almak%20istiyorum" 
+                                   target="_blank" class="text-decoration-none text-gold">
+                                    {{ translations.contact.whatsapp_text }}
+                                </a>
+                            </p>
+                        </div>
                     </div>
+                    
+                    <!-- Email -->
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4 class="contact-title">E-posta</h4>
+                            <p class="contact-info">
+                                <a href="mailto:info@queenvillaofficial.com" 
+                                   class="text-decoration-none text-gold">
+                                    info@queenvillaofficial.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="col-md-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4 class="contact-title">{{ translations.contact.location }}</h4>
+                            <p class="contact-info">
+                                <a href="https://g.co/kgs/hEanZAL" target="_blank" 
+                                   class="text-decoration-none text-gold">
+                                    {{ translations.contact.address }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Callback Modal -->
+<div class="modal fade" id="callbackModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ translations.callback.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="callbackForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="callback_name" 
+                               placeholder="{{ translations.callback.name }}" 
+                               pattern=".*\S+.*"
+                               title="Lütfen geçerli bir isim giriniz"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" name="callback_phone" 
+                               placeholder="{{ translations.callback.phone }}" 
+                               pattern="^(\+90|0)?[0-9]{10}$"
+                               title="Lütfen geçerli bir Türk telefon numarası giriniz (örn: 0555 123 45 67)"
+                               required>
+                    </div>
+                    <input type="hidden" name="language" value="{{ current_lang }}">
                 </form>
-                </div>
-                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="submit" form="callbackForm" class="btn-cta-primary">Ara Beni</button>
             </div>
         </div>
     </div>
-</section>
+</div>
+
+<!-- Success Message -->
+{% if show_success_message %}
+<div class="alert alert-success alert-dismissible fade show position-fixed" 
+     style="top: 100px; right: 20px; z-index: 1060;" role="alert">
+    <strong>Teşekkürler!</strong> En kısa sürede sizinle iletişime geçeceğiz.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Auto-hide success message
+document.addEventListener('DOMContentLoaded', function() {
+    const successAlert = document.querySelector('.alert-success');
+    if (successAlert) {
+        // Auto-hide after 8 seconds
+        setTimeout(() => {
+            successAlert.classList.add('fade');
+            setTimeout(() => {
+                if (successAlert.parentNode) {
+                    successAlert.remove();
+                }
+            }, 150);
+        }, 8000);
+    }
+});
+
+// Hero Auto-Slider with right-to-left animation
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active', 'prev');
+            if (i === index) {
+                slide.classList.add('active');
+            } else if (i < index) {
+                slide.classList.add('prev');
+            }
+        });
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // Initialize first slide
+    if (slides.length > 0) {
+        showSlide(0);
+        // Auto-advance slides every 5 seconds
+        if (slides.length > 1) {
+            setInterval(nextSlide, 5000);
+        }
+    }
+    
+    // Gallery Modal
+    const galleryModal = document.getElementById('galleryModal');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const modalImage = document.getElementById('galleryModalImage');
+    const modalCaption = document.getElementById('galleryModalCaption');
+    
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const imageSrc = this.getAttribute('data-image');
+            const caption = this.getAttribute('data-caption');
+            
+            modalImage.src = imageSrc;
+            modalImage.alt = caption;
+            modalCaption.textContent = caption;
+        });
+    });
+});
+
+// Gallery Slider
+let gallerySlideIndex = 1;
+
+function moveGallerySlide(direction) {
+    showGallerySlide(gallerySlideIndex += direction);
+}
+
+function currentGallerySlide(slideNumber) {
+    showGallerySlide(gallerySlideIndex = slideNumber);
+}
+
+function showGallerySlide(slideNumber) {
+    const slider = document.getElementById('gallerySlider');
+    const dots = document.querySelectorAll('.gallery-dot');
+    const totalSlides = document.querySelectorAll('.gallery-item').length;
+    
+    if (slideNumber > totalSlides) { gallerySlideIndex = 1; }
+    if (slideNumber < 1) { gallerySlideIndex = totalSlides; }
+    
+    // Move slider
+    const translateX = -(gallerySlideIndex - 1) * 100;
+    slider.style.transform = `translateX(${translateX}%)`;
+    
+    // Update dots
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (dots[gallerySlideIndex - 1]) {
+        dots[gallerySlideIndex - 1].classList.add('active');
+    }
+}
+
+// Auto-advance gallery every 6 seconds
+setInterval(() => {
+    moveGallerySlide(1);
+}, 6000);
+</script>
 
 <!-- Footer -->
-<footer class="bg-dark text-light py-4">
+<footer class="section section-dark py-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h5 class="text-gold">{{ translations.footer.company }}</h5>
-                <p class="mb-1">{{ translations.footer.address }}</p>
-                <p class="mb-1">{{ translations.footer.phone }}</p>
-                <p>{{ translations.footer.email }}</p>
+                <p class="text-light mb-0">
+                    &copy; 2025 Beylerbeyi Residences. Tüm hakları saklıdır.
+                </p>
             </div>
             <div class="col-md-6 text-md-end">
-                <a href="#" class="text-light me-3">{{ translations.footer.kvkk }}</a>
-                <a href="#" class="text-light">{{ translations.footer.privacy }}</a>
+                <a href="{{ url_for('kvkk', lang=current_lang) }}" class="text-light text-decoration-none me-3">
+                    KVKK Aydınlatma Metni
+                </a>
+                <a href="#" class="text-light text-decoration-none">
+                    Çerez Politikası
+                </a>
             </div>
         </div>
     </div>
 </footer>
 
-<!-- Callback Modal -->
-<div class="modal fade" id="callbackModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-light">
-            <div class="modal-header border-gold">
-                <h5 class="modal-title text-gold">{{ translations.hero.cta_callback }}</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form id="callbackForm">
-                    <div class="mb-3">
-                        <input type="text" class="form-control luxury-input-dark" 
-                               id="callback_name" placeholder="{{ translations.lead_form.name }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="tel" class="form-control luxury-input-dark" 
-                               id="callback_phone" placeholder="{{ translations.lead_form.phone }}" required>
-                    </div>
-                    <input type="hidden" id="callback_language" value="{{ current_lang }}">
-                </form>
-            </div>
-            <div class="modal-footer border-gold">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-                <button type="button" class="btn btn-gold" onclick="submitCallback()">
-                    {{ translations.hero.cta_callback }}
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Mobile Sticky Bar -->
-<div class="mobile-sticky-bar d-lg-none">
-    <div class="container-fluid">
-        <div class="row g-0">
-            <div class="col-6">
-                <a href="tel:{{ translations.navigation.phone }}" class="btn btn-luxury w-100 rounded-0">
-                    <i class="fas fa-phone me-2"></i>Ara
-                </a>
-            </div>
-            <div class="col-6">
-                <a href="https://wa.me/905321234567" class="btn btn-success w-100 rounded-0" target="_blank">
-                    <i class="fab fa-whatsapp me-2"></i>WhatsApp
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Flash Messages -->
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1050;">
-            {% for category, message in messages %}
-            <div class="toast {% if category == 'success' %}bg-success{% else %}bg-danger{% endif %} text-white" role="alert">
-                <div class="toast-body">
-                    {{ message }}
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endwith %}
-
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}

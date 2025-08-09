@@ -1,9 +1,7 @@
 import os
 import logging
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
-from sqlalchemy.orm import DeclarativeBase
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 # Try to load environment variables from .env file for local development
@@ -17,26 +15,31 @@ except ImportError:
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
-class Base(DeclarativeBase):
-    pass
-
-db = SQLAlchemy(model_class=Base)
 mail = Mail()
 
 # create the app
 app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "luxury-real-estate-secret-key")
 
-# Only add ProxyFix for production environments (Replit, Heroku, etc.)
-if os.environ.get("REPLIT_ENVIRONMENT") or os.environ.get("DYNO") or os.environ.get("RAILWAY_ENVIRONMENT"):
-    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+# Session configuration - Fix for partitioned cookie issue
+app.config['SESSION_COOKIE_SECURE'] = False  # Set to True in production with HTTPS
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 
-# configure the database
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///beylerbeyi.db")
-app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-    "pool_recycle": 300,
-    "pool_pre_ping": True,
-}
+# Monkey patch to fix partitioned cookie parameter issue
+from werkzeug.wrappers import Response
+original_set_cookie = Response.set_cookie
+
+def patched_set_cookie(self, *args, **kwargs):
+    # Remove the partitioned parameter if it exists
+    kwargs.pop('partitioned', None)
+    return original_set_cookie(self, *args, **kwargs)
+
+Response.set_cookie = patched_set_cookie
+
+# Only add ProxyFix for production environments (Heroku, Railway, etc.)
+if os.environ.get("DYNO") or os.environ.get("RAILWAY_ENVIRONMENT"):
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 # Mail configuration
 app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
@@ -47,13 +50,10 @@ app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
 
 # initialize extensions
-db.init_app(app)
 mail.init_app(app)
 
-with app.app_context():
-    import models
-    import routes
-    db.create_all()
+# Import routes (no database models needed)
+import routes
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

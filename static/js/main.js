@@ -1,12 +1,11 @@
-// Luxury Real Estate Landing Page JavaScript
+// Clean Luxury Real Estate Landing Page JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize components
-    initializeAnimations();
+    initializeHeroSlider();
     initializeForms();
-    initializeToasts();
     initializeCallbackModal();
-    initializeAnalytics();
+    initializeScrollEffects();
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -22,32 +21,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Navbar scroll effect
+    // Clean navbar scroll effect
     window.addEventListener('scroll', function() {
         const nav = document.querySelector('.luxury-nav');
-        if (window.scrollY > 100) {
-            nav.style.background = 'rgba(0,0,0,0.95)';
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
         } else {
-            nav.style.background = 'rgba(0,0,0,0.9)';
+            nav.classList.remove('scrolled');
         }
     });
 });
 
-// Initialize scroll animations
-function initializeAnimations() {
+// Initialize clean scroll effects
+function initializeScrollEffects() {
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.2,
         rootMargin: '0px 0px -50px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
             }
         });
     }, observerOptions);
+    
+    // Observe fade-up elements
+    document.querySelectorAll('.fade-up').forEach(el => {
+        observer.observe(el);
+    });
+}
     
     // Animate sections on scroll
     document.querySelectorAll('.value-prop, .feature-card, .unit-card, .testimonial-card').forEach(el => {
@@ -56,6 +60,35 @@ function initializeAnimations() {
         el.style.transition = 'all 0.6s ease-out';
         observer.observe(el);
     });
+}
+
+// Hero Auto-Sliding Gallery
+function initializeHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    
+    console.log('Hero slider initialized with', slides.length, 'slides');
+    
+    if (slides.length === 0) {
+        console.warn('No hero slides found!');
+        return;
+    }
+    
+    function nextSlide() {
+        console.log('Changing from slide', currentSlide, 'to', (currentSlide + 1) % slides.length);
+        
+        // Remove active class from current slide
+        slides[currentSlide].classList.remove('active');
+        
+        // Move to next slide
+        currentSlide = (currentSlide + 1) % slides.length;
+        
+        // Add active class to new slide
+        slides[currentSlide].classList.add('active');
+    }
+    
+    // Start auto-sliding
+    setInterval(nextSlide, 3000); // Change slide every 3 seconds
 }
 
 // Form handling
@@ -75,11 +108,95 @@ function initializeForms() {
             e.target.value = value;
         });
     });
-    
+
+    // Email validation function
+    function isValidEmail(email) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email) && email.length <= 320 && !email.includes('..');
+    }
+
+    // Phone validation function
+    function isValidPhone(phone) {
+        const cleanPhone = phone.replace(/[\s\-\(\)\+\.]/g, '');
+        const patterns = [
+            /^90[0-9]{10}$/,    // +905551234567
+            /^0[0-9]{10}$/,     // 05551234567
+            /^5[0-9]{9}$/,      // 5551234567
+            /^[0-9]{10}$/       // 10 digits
+        ];
+        return patterns.some(pattern => pattern.test(cleanPhone)) || 
+               (cleanPhone.length >= 10 && cleanPhone.length <= 15 && /^[0-9]+$/.test(cleanPhone));
+    }
+
+    // Add validation styling
+    function addValidationStyling() {
+        const style = document.createElement('style');
+        style.textContent = `
+            .is-invalid {
+                border-color: #dc3545 !important;
+                box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+            }
+            .invalid-feedback {
+                display: block;
+                color: #dc3545;
+                font-size: 0.875em;
+                margin-top: 0.25rem;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    addValidationStyling();
+
     // Form validation
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
+            let isValid = true;
+
+            // Clear previous validation
+            form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+            form.querySelectorAll('.invalid-feedback').forEach(el => el.remove());
+
+            // Validate name
+            const nameInput = form.querySelector('input[name="name"], input[name="callback_name"]');
+            if (nameInput) {
+                const name = nameInput.value.trim();
+                if (!name) {
+                    showFieldError(nameInput, 'İsim gereklidir / Name is required');
+                    isValid = false;
+                }
+            }
+
+            // Validate phone
+            const phoneInput = form.querySelector('input[name="phone"], input[name="callback_phone"]');
+            if (phoneInput) {
+                const phone = phoneInput.value.trim();
+                if (!phone) {
+                    showFieldError(phoneInput, 'Telefon numarası gereklidir / Phone number is required');
+                    isValid = false;
+                } else if (!isValidPhone(phone)) {
+                    showFieldError(phoneInput, 'Geçersiz telefon numarası formatı / Invalid phone number format');
+                    isValid = false;
+                }
+            }
+
+            // Validate email (if present and not empty)
+            const emailInput = form.querySelector('input[name="email"]');
+            if (emailInput && emailInput.value.trim()) {
+                const email = emailInput.value.trim();
+                if (!isValidEmail(email)) {
+                    showFieldError(emailInput, 'Geçersiz e-posta adresi formatı / Invalid email address format');
+                    isValid = false;
+                }
+            }
+
+            // If validation fails, prevent submission
+            if (!isValid) {
+                e.preventDefault();
+                return false;
+            }
+
+            // Proceed with loading state
             const submitBtn = form.querySelector('button[type="submit"]');
             if (submitBtn) {
                 submitBtn.disabled = true;
@@ -95,7 +212,17 @@ function initializeForms() {
             }, 5000);
         });
     });
-    
+
+    // Helper function to show field error
+    function showFieldError(input, message) {
+        input.classList.add('is-invalid');
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'invalid-feedback';
+        errorDiv.textContent = message;
+        input.parentNode.appendChild(errorDiv);
+        input.focus();
+    }
+
     // Store original button text
     document.querySelectorAll('button[type="submit"]').forEach(btn => {
         btn.setAttribute('data-original-text', btn.innerHTML);
@@ -152,16 +279,22 @@ function submitCallback() {
             showToast('Geri arama talebiniz alındı. En kısa sürede arayacağız!', 'success');
             bootstrap.Modal.getInstance(document.getElementById('callbackModal')).hide();
             
-            // Track conversion
+            // Track Facebook Pixel Lead conversion for callback
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Callback Request',
+                    content_category: 'Real Estate Lead',
+                    value: 0,
+                    currency: 'USD'
+                });
+            }
+            
+            // Track Google Analytics conversion
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'callback_request', {
                     event_category: 'engagement',
                     event_label: 'header_callback'
                 });
-            }
-            
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead');
             }
         } else {
             showToast('Bir hata oluştu. Lütfen tekrar deneyin.', 'error');

@@ -1,63 +1,99 @@
 {
   "meta": {
-    "title": "Beylerbeyi Boğaz Rezidansları - Lüks Yatırım Fırsatı",
-    "description": "Boğaz manzaralı lüks konutlarda yaşam. Beylerbeyi'de prestijli yatırım fırsatı. Şimdi rezervasyon yaptırın."
+    "title": "Beylerbeyi - Gerçek Lüks, Boğaz Manzaralı Residences",
+    "description": "Beylerbeyi'nde Boğaz manzaralı lüks yaşam. Gerçek lükse öncülük edin. Deprem izolatörlü, LEED sertifikalı, akıllı bina teknolojisi."
   },
   "navigation": {
-    "phone": "+90 212 555 0123",
+    "phone": "+90 538 059 10 52",
     "whatsapp": "WhatsApp"
   },
   "hero": {
-    "headline": "Beylerbeyi'nde Boğaz'a Komşu Lüks Yaşam",
-    "subheadline": "İstanbul'un en prestijli lokasyonunda, Boğaz manzaralı lüks rezidanslarda yaşamın ayrıcalığını keşfedin.",
-    "cta_brochure": "Broşürü İndir",
-    "cta_callback": "Sizi Arayalım",
-    "trust_badge": "Sınırlı Sayıda Unit"
+    "headline": "Gerçek Lüks, Boğaz Manzaralı Beylerbeyi",
+    "subheadline": "Kıtaların arasından zarifçe akan Boğaz'ın tam kalbinde, ihtişamın ve nice hikayelerin yüzyıllardır yaşadığı yerde. Beylerbeyi'nde İstanbul'a yeniden âşık olacak, onun güzellikleriyle dolu bir hayatı fethedeceksiniz.",
+    "cta_brochure": "Broşür İndir",
+    "cta_callback": "Geri Arama Talep Et",
+    "trust_badge": "Sınırlı Sayıda Daire"
   },
   "quick_form": {
     "title": "Hemen Bilgi Alın",
     "name": "Adınız Soyadınız",
     "phone": "Telefon Numaranız",
     "language": "Dil Tercihiniz",
+    "consent": "KVKK metnini okudum ve kabul ediyorum",
     "submit": "Bilgi Talep Et"
+  },
+  "earthquake": {
+    "title": "Deprem Güvenliği & Sismik İzolatör Teknolojisi",
+    "subtitle": "10 şiddetindeki depreme dayanıklı, dünya standardında güvenlik",
+    "main_feature": "Beylerbeyi Residences, Türkiye'nin en ileri sismik izolatör teknolojisiyle inşa edilmiştir",
+    "isolator_title": "Sismik İzolatör Sistemi Nedir?",
+    "isolator_desc": "Yapıyı temelden ayırarak deprem sırasında oluşan enerjinin binaya doğrudan iletilmesini engelleyen ileri teknoloji sistem",
+    "benefits": {
+      "title": "Deprem Güvenliği Avantajları",
+      "benefit_1": "10 şiddetindeki depreme dayanıklılık",
+      "benefit_2": "Yapısal hasarları %95 oranında azaltır",
+      "benefit_3": "İç mekanda sallanmayı minimize eder",
+      "benefit_4": "Uzun vadeli yapısal bütünlük",
+      "benefit_5": "Uluslararası güvenlik standartları"
+    },
+    "technology": {
+      "title": "İleri Teknoloji Özellikler",
+      "tech_1": "Japonya teknolojisi sismik izolatörler",
+      "tech_2": "Çok katmanlı kauçuk-çelik sistemler", 
+      "tech_3": "Otomatik sönümleme mekanizması",
+      "tech_4": "Sürekli performans monitörü",
+      "tech_5": "25 yıl garanti"
+    },
+    "certification": "TÜİK ve uluslararası sismik güvenlik sertifikaları"
   },
   "value_props": {
     "title": "Neden Beylerbeyi?",
     "waterfront": {
-      "title": "Boğaz Kıyısı",
-      "desc": "Doğrudan Boğaz manzarası"
+      "title": "Tarihe Öncülük Eden Semt",
+      "desc": "Kıtaların arasından zarifçe akan Boğaz'ın kalbinde"
     },
     "architecture": {
-      "title": "Mimari Mükemmellik",
-      "desc": "Dünya standartlarında tasarım"
+      "title": "Deprem İzolatörlü Yapı",
+      "desc": "10 şiddetindeki depreme dayanıklı sismik izolatörler"
     },
     "investment": {
-      "title": "Yatırım Değeri",
-      "desc": "Yüksek getiri potansiyeli"
+      "title": "LEED Sertifikalı",
+      "desc": "Dünya standardında yeşil bina sertifikası"
     },
     "developer": {
-      "title": "Güvenilir Geliştirici",
-      "desc": "40+ yıllık deneyim"
+      "title": "Akıllı Bina Teknolojisi",
+      "desc": "Aydınlatma, panjur ve yerden ısıtma kontrol sistemi"
     }
   },
   "features": {
     "title": "Premium Özellikler",
-    "smart_home": "Akıllı Ev Sistemi",
-    "concierge": "Concierge Hizmeti",
-    "parking": "Özel Otopark",
-    "spa": "Spa & Wellness",
-    "security": "7/24 Güvenlik",
-    "gardens": "Peyzaj Bahçeleri"
+    "smart_home": "Akıllı Bina Teknolojisi",
+    "concierge": "Ceviz Parke Zemin",
+    "parking": "Özel Otopark - 2 Araçlık",
+    "spa": "İnce Profil Pencere Teknolojisi",
+    "security": "Sismik İzolatör Sistemi",
+    "gardens": "Maksimum Gün Işığı Alımı"
+  },
+  "gallery": {
+    "title": "Proje Galerisi",
+    "subtitle": "Beylerbeyi Residences'ın eşsiz tasarımını keşfedin",
+    "caption_1": "Boğaz Manzaralı Lüks Yaşam Alanları",
+    "caption_2": "Modern Mimari ve Premium Tasarım",
+    "caption_3": "Geniş Balkonlar ve Doğa Manzarası",
+    "caption_4": "Bahçe Dubleks ile Özel Yaşam",
+    "caption_5": "Elit Konum ve Şehir Manzarası",
+    "view_all": "Tümünü Görüntüle"
   },
   "units": {
     "title": "Daire Tipleri & Özellikler",
     "from": "Dan itibaren",
-    "unit_1_1": "1+1 Daireler",
-    "unit_2_1": "2+1 Daireler", 
-    "unit_3_1": "3+1 Daireler",
-    "unit_4_1": "4+1 Dubleks",
-    "size_range": "m² - m²",
-    "cta_plans": "Planları Gör"
+    "unit_3_1": "3+1 Daireler - 138,5 m²",
+    "unit_4_1": "4+1 Daireler - 150,72 m²",
+    "unit_5_2": "5+2 Dubleks - 278,6 m²",
+    "unit_garden": "4+1 Bahçe Dubleks - 245,92 m²",
+    "feature_1": "Özel Otopark - 2 Araçlık",
+    "feature_2": "Özel Depo Alanı",
+    "feature_3": "Boğaz ve Doğa Manzarası"
   },
   "location": {
     "title": "Konum & Erişim",
@@ -69,12 +105,28 @@
     }
   },
   "investment": {
-    "title": "Yatırım & Finansman",
-    "starting_price": "Fiyatlar FROM_PRICE_TRY TL'den başlıyor",
-    "payment_plan": "Esnek Ödeme Seçenekleri",
-    "rental_yield": "Yıllık %8-12 Kira Getirisi",
-    "citizenship": "Vatandaşlık İmkanı",
-    "cta_investment": "Yatırım Teklifi Al"
+    "title": "Gerçek Lüks Yaşam",
+    "starting_price": "Boğaz'ın mavisi karşılayacak her sabah sizi",
+    "payment_plan": "Bir kıtadan diğerine âdeta uzanıp dokunacaksınız",
+    "rental_yield": "Yunuslarla komşu, martılarla arkadaş olacaksınız",
+    "citizenship": "Tarih kokan bir semti, tüm güzellikleriyle yaşayacaksınız",
+    "cta_investment": "Gerçek Lükse Öncülük Et"
+  },
+  "luxury_features": {
+    "title": "Lükste Sürdürülebilir Tasarım",
+    "interior": "Sıcak renklerin tercih edildiği iç mekânda doğallıkla estetiği buluşturan ceviz parke",
+    "technology": "Akıllı bina teknolojisiyle kontrol edilen aydınlatma, panjur ve yerden ısıtma sistemi",
+    "windows": "İnce profil teknolojisiyle maksimum gün ışığı alan ve kişiselleştirilebilir aydınlatma ayarına sahip pencereler",
+    "kitchen": "Aydınlık ve ferah atmosfer yaratan açık renk dolaplar, yüksek dayanımlı estetik tezgâhlar",
+    "bathroom": "Modern ve sofistike görünümüyle krom ve antrasit armatürler, termostatik bataryalar"
+  },
+  "sustainability": {
+    "title": "Gerçek Lüks, Doğaya Saygılı Olandır",
+    "leed": "Enerji ve Çevresel Tasarımda Liderlik - LEED Sertifikası",
+    "water": "Su verimliliği - Bina su tüketiminde %20 tasarruf",
+    "energy": "Enerji verimliliği - %20 enerji tasarrufu sağlanmıştır",
+    "materials": "Geri dönüştürülmüş çevreci malzeme kullanımı",
+    "location": "Toplu taşıma teşvik edilmiş, elektrikli araç şarj istasyonları"
   },
   "testimonials": {
     "title": "Müşteri Görüşleri",
@@ -84,16 +136,16 @@
   },
   "faq": {
     "title": "Sıkça Sorulan Sorular",
-    "q1": "Ödeme planı nasıl?",
-    "a1": "Esnek ödeme seçenekleri mevcuttur. %30 peşin, kalan tutar 24 aya kadar taksitlendirilebilir.",
-    "q2": "Teslim tarihi ne zaman?",
-    "a2": "Proje DELIVERY_QUARTER_YEAR tarihinde teslim edilecektir.",
-    "q3": "Vatandaşlık için uygun mu?",
-    "a3": "Evet, 400.000 USD üzeri daireler vatandaşlık için uygundur.",
-    "q4": "Otopark dahil mi?",
-    "a4": "Her daireye 1 kapalı otopark dahildir.",
-    "q5": "Yönetim gideri ne kadar?",
-    "a5": "Aylık yönetim gideri m²'ye göre hesaplanır, ortalama 8-12 TL/m²."
+    "q1": "Sismik izolatör sistemi nedir?",
+    "a1": "Yapıyı temelden ayırarak deprem sırasında oluşan enerjinin binaya doğrudan iletilmesini engelliyor. 10 şiddetindeki depreme dayanabilecek nitelikte tasarlandı.",
+    "q2": "LEED sertifikası ne demek?",
+    "a2": "Enerji ve Çevresel Tasarımda Liderlik anlamına gelen, dünya çapında en yaygın kullanılan yeşil bina derecelendirme sistemi.",
+    "q3": "Akıllı bina teknolojisi neler içeriyor?",
+    "a3": "Aydınlatma, panjur ve yerden ısıtma sistemi akıllı teknoloji ile kontrol edilebiliyor.",
+    "q4": "Hangi daire tipleri mevcut?",
+    "a4": "3+1 (138,5m²), 4+1 (150,72m²), 5+2 Dubleks (278,6m²) ve 4+1 Bahçe Dubleks (245,92m²) seçenekleri var.",
+    "q5": "Her daireye otopark dahil mi?",
+    "a5": "Evet, her daireye 2 araçlık özel otopark ve özel depo alanı dahildir."
   },
   "lead_form": {
     "title": "Detaylı Bilgi & Rezervasyon",
@@ -115,16 +167,45 @@
     "brochure_button": "Broşürü İndir"
   },
   "footer": {
-    "company": "DEVELOPER_NAME",
-    "address": "İstanbul, Türkiye",
-    "phone": "+90 212 555 0123",
-    "email": "info@example.com",
+    "company": "Beylerbeyi Residences",
+    "address": "Beylerbeyi, İstanbul, Türkiye",
+    "phone": "+90 538 059 10 52",
+    "phone2": "+90 539 502 10 58",
+    "email": "info@queenvillaofficial.com",
+    "maps_link": "https://g.co/kgs/hEanZAL",
     "kvkk": "KVKK Metni",
     "privacy": "Gizlilik Politikası"
+  },
+  "callback": {
+    "title": "Geri Arama Talebi",
+    "name": "Ad Soyad",
+    "phone": "Telefon Numaranız"
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Lüks emlak uzmanlarımızla iletişime geçin",
+    "phone1": "Ana Telefon",
+    "phone2": "Alternatif Telefon",
+    "whatsapp_text": "Mesaj Gönder",
+    "location": "Konum",
+    "address": "Haritada Görüntüle"
   },
   "languages": {
     "tr": "Türkçe",
     "en": "English", 
     "ar": "العربية"
+  },
+  "success": {
+    "title": "Teşekkür Ederiz!",
+    "message": "Talebiniz başarıyla alındı. Lüks emlak danışmanımız 24 saat içerisinde sizinle iletişime geçerek özel görüntüleme randevunuzu planlamak üzere arayacak.",
+    "contact_title": "İletişim Bilgileri",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "location": "Konum",
+    "next_steps_title": "Bundan Sonra Ne Olacak?",
+    "step1": "24 saat içinde sizinle iletişime geçeceğiz",
+    "step2": "Özel gayrimenkul görüntüleme randevusu alacaksınız",
+    "step3": "Kişiselleştirilmiş yatırım danışmanlığı alacaksınız",
+    "back_to_home": "Ana Sayfaya Dön"
   }
 }

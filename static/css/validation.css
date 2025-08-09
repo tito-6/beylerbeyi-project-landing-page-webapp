@@ -1,0 +1,101 @@
+/* Form Validation Styles */
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+.form-control:focus.is-invalid {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+.invalid-feedback {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    border-left: 3px solid #dc3545;
+}
+
+.form-control.is-valid {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}
+
+.valid-feedback {
+    display: block !important;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #28a745;
+}
+
+/* Success Message Animation */
+.alert-success {
+    animation: slideInFromRight 0.5s ease-out;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.alert-success.fade {
+    animation: slideOutToRight 0.3s ease-out forwards;
+}
+
+@keyframes slideOutToRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Form Input Enhancements */
+.form-control:focus {
+    border-color: #d4a574;
+    box-shadow: 0 0 0 0.2rem rgba(212, 165, 116, 0.25);
+}
+
+.btn-cta-primary:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Phone number formatting helper */
+.form-control[type="tel"]::placeholder {
+    color: #6c757d;
+}
+
+.form-control[type="tel"]:focus::placeholder {
+    color: #adb5bd;
+}
+
+/* Validation tooltip styles */
+.form-control[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    z-index: 1000;
+    white-space: nowrap;
+}

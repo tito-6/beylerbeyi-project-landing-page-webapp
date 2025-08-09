@@ -1,0 +1,378 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Clean Navigation -->
+<nav class="navbar navbar-expand-lg luxury-nav" id="mainNav">
+    <div class="container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            {% for lang in supported_languages %}
+                <a href="{{ url_for('index', lang=lang) }}" 
+                   class="lang-link {% if lang == current_lang %}active{% endif %}">
+                    {{ translations.languages[lang] }}
+                </a>
+            {% endfor %}
+        </div>
+        
+        <div class="nav-actions">
+            <a href="tel:{{ translations.navigation.phone }}" class="nav-phone">
+                <i class="fas fa-phone me-2"></i>{{ translations.navigation.phone }}
+            </a>
+            <a href="https://wa.me/905321234567?text=Beylerbeyi%20Residences%20hakkında%20bilgi%20almak%20istiyorum" 
+               class="nav-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>{{ translations.navigation.whatsapp }}
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h1 class="mb-4">{{ translations.hero.headline }}</h1>
+                <p class="hero-subtitle">{{ translations.hero.subheadline }}</p>
+                
+                <div class="hero-ctas">
+                    <a href="#lead-form" class="btn-cta-primary">
+                        <i class="fas fa-download me-2"></i>{{ translations.hero.cta_brochure }}
+                    </a>
+                    <button type="button" class="btn-cta-secondary" 
+                            data-bs-toggle="modal" data-bs-target="#callbackModal">
+                        <i class="fas fa-phone me-2"></i>{{ translations.hero.cta_callback }}
+                    </button>
+                </div>
+                
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-star me-2 text-gold"></i>{{ translations.hero.trust_badge }}
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-map-marker-alt me-2 text-gold"></i>Premium Location
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-alt me-2 text-gold"></i>Guaranteed Investment
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-5">
+                <div class="card luxury-card">
+                    <div class="card-body p-4">
+                        <h3 class="text-center mb-4">{{ translations.quick_form.title }}</h3>
+                        <form method="POST" action="{{ url_for('submit_lead') }}" class="quick-form">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" 
+                                       name="name" placeholder="{{ translations.quick_form.name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" 
+                                       name="phone" placeholder="{{ translations.quick_form.phone }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" name="language">
+                                    {% for lang in supported_languages %}
+                                    <option value="{{ lang }}" {% if lang == current_lang %}selected{% endif %}>
+                                        {{ translations.languages[lang] }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" name="kvkk_consent" id="quickKvkk" required>
+                                <label class="form-check-label" for="quickKvkv">
+                                    <small>{{ translations.quick_form.consent }}</small>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn-cta-primary w-100">
+                                {{ translations.quick_form.submit }}
+                            </button>
+                            <input type="hidden" name="language" value="{{ current_lang }}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="section section-light">
+    <div class="container">
+        <h2 class="section-title">Premium Özellikler</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="feature-title">Akıllı Ev Sistemi</h3>
+                    <p class="feature-description">Modern teknoloji ile donatılmış akıllı ev sistemleri</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3 class="feature-title">Concierge Hizmeti</h3>
+                    <p class="feature-description">7/24 profesyonel concierge hizmeti</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="feature-title">Özel Otopark</h3>
+                    <p class="feature-description">Kapalı ve güvenli özel otopark alanı</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="feature-title">Spa & Wellness</h3>
+                    <p class="feature-description">Modern spa ve wellness olanakları</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">7/24 Güvenlik</h3>
+                    <p class="feature-description">Profesyonel güvenlik ve kamera sistemleri</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3 class="feature-title">Peyzaj Bahçeleri</h3>
+                    <p class="feature-description">Profesyonel peyzaj mimarisiyle tasarlanmış bahçeler</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Property Types Section -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Daire Tipleri & Özellikler</h2>
+        <div class="row">
+            <div class="col-lg-6 col-xl-3 mb-4">
+                <div class="property-card">
+                    <div class="property-header">
+                        <h3 class="property-title">1+1 Daireler</h3>
+                        <p class="property-size">65-85 m²</p>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-price">₺2,500,000'dan itibaren</div>
+                        <ul class="property-features">
+                            <li>Stunning Bosphorus Views</li>
+                            <li>Premium Location</li>
+                            <li>Modern Amenities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 col-xl-3 mb-4">
+                <div class="property-card">
+                    <div class="property-header">
+                        <h3 class="property-title">2+1 Daireler</h3>
+                        <p class="property-size">95-120 m²</p>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-price">₺3,800,000'dan itibaren</div>
+                        <ul class="property-features">
+                            <li>Spacious Layout</li>
+                            <li>Master Suite</li>
+                            <li>Private Balcony</li>
+                            <li>Premium Finishes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 col-xl-3 mb-4">
+                <div class="property-card">
+                    <div class="property-header">
+                        <h3 class="property-title">3+1 Daireler</h3>
+                        <p class="property-size">140-170 m²</p>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-price">₺5,200,000'dan itibaren</div>
+                        <ul class="property-features">
+                            <li>Family-Sized Living</li>
+                            <li>Multiple Bedrooms</li>
+                            <li>Large Terrace</li>
+                            <li>Study Room</li>
+                            <li>Luxury Kitchen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 col-xl-3 mb-4">
+                <div class="property-card">
+                    <div class="property-header">
+                        <h3 class="property-title">4+1 Dubleks</h3>
+                        <p class="property-size">200-250 m²</p>
+                    </div>
+                    <div class="property-body">
+                        <div class="property-price">₺8,500,000'dan itibaren</div>
+                        <ul class="property-features">
+                            <li>Penthouse Level</li>
+                            <li>360° Views</li>
+                            <li>Private Elevator</li>
+                            <li>Rooftop Terrace</li>
+                            <li>Premium Concierge</li>
+                            <li>Smart Home Systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Location Section -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title text-white">Konum & Erişim</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="text-white mb-4">Premium İstanbul Konumu</h3>
+                <p class="text-light">Beylerbeyi'nin prestijli atmosferinde, Boğaz'a nazır eşsiz bir konumda yer alan projemiz, şehrin merkezi lokasyonlarına kolay erişim imkanı sunuyor.</p>
+                <ul class="list-unstyled mt-4">
+                    <li class="mb-3 text-light">
+                        <i class="fas fa-map-marker-alt text-gold me-3"></i>
+                        Beylerbeyi Sahili - 2 dakika yürüme mesafesi
+                    </li>
+                    <li class="mb-3 text-light">
+                        <i class="fas fa-bridge text-gold me-3"></i>
+                        Boğaziçi Köprüsü - 5 dakika araç mesafesi
+                    </li>
+                    <li class="mb-3 text-light">
+                        <i class="fas fa-plane text-gold me-3"></i>
+                        Sabiha Gökçen Havalimanı - 45 dakika
+                    </li>
+                    <li class="mb-3 text-light">
+                        <i class="fas fa-shopping-bag text-gold me-3"></i>
+                        Zorlu Center - 20 dakika
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-white p-4 rounded" style="min-height: 300px;">
+                    <p class="text-center text-secondary pt-5">Harita entegrasyonu için Google Maps API gereklidir</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lead Form Section -->
+<section class="section section-light" id="lead-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card luxury-card">
+                    <div class="card-body p-5">
+                        <h2 class="section-title mb-4">{{ translations.form.title }}</h2>
+                        <form method="POST" action="{{ url_for('submit_lead') }}">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" name="name" 
+                                           placeholder="{{ translations.form.name }}" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="tel" class="form-control" name="phone" 
+                                           placeholder="{{ translations.form.phone }}" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" name="email" 
+                                           placeholder="{{ translations.form.email }}">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <select class="form-select" name="unit_interest">
+                                        <option value="">İlgilendiğiniz daire tipi</option>
+                                        <option value="1+1">1+1 Daire</option>
+                                        <option value="2+1">2+1 Daire</option>
+                                        <option value="3+1">3+1 Daire</option>
+                                        <option value="4+1">4+1 Dubleks</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" name="kvkk_consent" 
+                                       id="fullFormKvkk" required>
+                                <label class="form-check-label" for="fullFormKvkk">
+                                    {{ translations.form.consent }}
+                                </label>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-cta-primary">
+                                    {{ translations.form.submit }}
+                                </button>
+                            </div>
+                            <input type="hidden" name="language" value="{{ current_lang }}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Callback Modal -->
+<div class="modal fade" id="callbackModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ translations.callback.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="callbackForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="callback_name" 
+                               placeholder="{{ translations.callback.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" name="callback_phone" 
+                               placeholder="{{ translations.callback.phone }}" required>
+                    </div>
+                    <input type="hidden" name="language" value="{{ current_lang }}">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="submit" form="callbackForm" class="btn-cta-primary">Ara Beni</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Message -->
+{% if session.get('lead_submitted') %}
+<div class="alert alert-success alert-dismissible fade show position-fixed" 
+     style="top: 100px; right: 20px; z-index: 1060;" role="alert">
+    <strong>Teşekkürler!</strong> En kısa sürede sizinle iletişime geçeceğiz.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
