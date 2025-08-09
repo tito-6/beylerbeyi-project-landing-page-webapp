@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Top Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top luxury-nav">
+<nav class="navbar navbar-expand-lg navbar-dark luxury-nav" id="mainNav">
     <div class="container">
         <!-- Language Switcher -->
         <div class="language-switcher">
@@ -14,12 +14,12 @@
             {% endfor %}
         </div>
         
-        <div class="ms-auto d-flex align-items-center">
-            <a href="tel:{{ translations.navigation.phone }}" class="btn btn-outline-gold me-3">
+        <div class="nav-actions ms-auto">
+            <a href="tel:{{ translations.navigation.phone }}" class="nav-phone">
                 <i class="fas fa-phone me-2"></i>{{ translations.navigation.phone }}
             </a>
             <a href="https://wa.me/905321234567?text=Beylerbeyi%20Residences%20hakkında%20bilgi%20almak%20istiyorum" 
-               class="btn btn-success" target="_blank">
+               class="nav-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp me-2"></i>{{ translations.navigation.whatsapp }}
             </a>
         </div>
@@ -27,38 +27,51 @@
 </nav>
 
 <!-- Hero Section -->
-<section class="hero-section position-relative">
+<section class="hero-section">
     <div class="hero-background">
         <img src="{{ url_for('static', filename='images/placeholder.svg') }}" 
-             alt="Bosphorus View" class="hero-image w-100 h-100 object-cover">
-        <div class="hero-overlay"></div>
+             alt="Bosphorus View" class="hero-image">
+    </div>
+    
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
     </div>
     
     <div class="container hero-content">
         <div class="row align-items-center min-vh-100">
             <div class="col-lg-8">
                 <div class="hero-text">
-                    <h1 class="display-3 mb-4 luxury-headline">
+                    <h1 class="luxury-headline mb-5">
                         {{ translations.hero.headline }}
                     </h1>
-                    <p class="lead mb-5 hero-subtitle">
+                    <p class="hero-subtitle">
                         {{ translations.hero.subheadline }}
                     </p>
                     
-                    <div class="hero-ctas mb-5">
-                        <a href="#lead-form" class="btn btn-luxury btn-lg me-3 mb-3">
+                    <div class="hero-ctas">
+                        <a href="#lead-form" class="btn btn-cta-primary">
                             <i class="fas fa-download me-2"></i>{{ translations.hero.cta_brochure }}
                         </a>
-                        <button type="button" class="btn btn-outline-luxury btn-lg mb-3" 
+                        <button type="button" class="btn btn-cta-secondary" 
                                 data-bs-toggle="modal" data-bs-target="#callbackModal">
                             <i class="fas fa-phone me-2"></i>{{ translations.hero.cta_callback }}
                         </button>
                     </div>
                     
                     <div class="trust-badges">
-                        <span class="badge bg-gold text-dark px-4 py-2">
+                        <div class="trust-badge">
                             <i class="fas fa-star me-2"></i>{{ translations.hero.trust_badge }}
-                        </span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-award me-2"></i>Premium Location
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-shield-alt me-2"></i>Guaranteed Investment
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,41 +118,41 @@
 </section>
 
 <!-- Value Propositions -->
-<section class="py-5 bg-light">
+<section class="value-props-section">
     <div class="container">
-        <h2 class="section-title text-center mb-5">{{ translations.value_props.title }}</h2>
-        <div class="row g-4">
+        <h2 class="section-title">{{ translations.value_props.title }}</h2>
+        <div class="row g-5">
             <div class="col-md-6 col-lg-3">
-                <div class="value-prop text-center">
-                    <div class="value-icon mb-3">
-                        <i class="fas fa-water fa-3x text-luxury"></i>
+                <div class="value-prop-card text-center">
+                    <div class="value-icon">
+                        <i class="fas fa-water fa-4x text-luxury"></i>
                     </div>
                     <h4>{{ translations.value_props.waterfront.title }}</h4>
                     <p>{{ translations.value_props.waterfront.desc }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="value-prop text-center">
-                    <div class="value-icon mb-3">
-                        <i class="fas fa-building fa-3x text-luxury"></i>
+                <div class="value-prop-card text-center">
+                    <div class="value-icon">
+                        <i class="fas fa-building fa-4x text-luxury"></i>
                     </div>
                     <h4>{{ translations.value_props.architecture.title }}</h4>
                     <p>{{ translations.value_props.architecture.desc }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="value-prop text-center">
-                    <div class="value-icon mb-3">
-                        <i class="fas fa-chart-line fa-3x text-luxury"></i>
+                <div class="value-prop-card text-center">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line fa-4x text-luxury"></i>
                     </div>
                     <h4>{{ translations.value_props.investment.title }}</h4>
                     <p>{{ translations.value_props.investment.desc }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="value-prop text-center">
-                    <div class="value-icon mb-3">
-                        <i class="fas fa-award fa-3x text-luxury"></i>
+                <div class="value-prop-card text-center">
+                    <div class="value-icon">
+                        <i class="fas fa-award fa-4x text-luxury"></i>
                     </div>
                     <h4>{{ translations.value_props.developer.title }}</h4>
                     <p>{{ translations.value_props.developer.desc }}</p>
@@ -150,43 +163,43 @@
 </section>
 
 <!-- Features -->
-<section class="py-5">
-    <div class="container">
-        <h2 class="section-title text-center mb-5">{{ translations.features.title }}</h2>
-        <div class="row g-4">
+<section class="features-section">
+    <div class="container position-relative">
+        <h2 class="section-title">{{ translations.features.title }}</h2>
+        <div class="row g-5">
             <div class="col-md-6 col-lg-4">
-                <div class="feature-card text-center p-4">
-                    <i class="fas fa-home fa-2x text-gold mb-3"></i>
+                <div class="feature-card">
+                    <i class="fas fa-home fa-3x"></i>
                     <h5>{{ translations.features.smart_home }}</h5>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="feature-card text-center p-4">
-                    <i class="fas fa-concierge-bell fa-2x text-gold mb-3"></i>
+                <div class="feature-card">
+                    <i class="fas fa-concierge-bell fa-3x"></i>
                     <h5>{{ translations.features.concierge }}</h5>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="feature-card text-center p-4">
-                    <i class="fas fa-car fa-2x text-gold mb-3"></i>
+                <div class="feature-card">
+                    <i class="fas fa-car fa-3x"></i>
                     <h5>{{ translations.features.parking }}</h5>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="feature-card text-center p-4">
-                    <i class="fas fa-spa fa-2x text-gold mb-3"></i>
+                <div class="feature-card">
+                    <i class="fas fa-spa fa-3x"></i>
                     <h5>{{ translations.features.spa }}</h5>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="feature-card text-center p-4">
-                    <i class="fas fa-shield-alt fa-2x text-gold mb-3"></i>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt fa-3x"></i>
                     <h5>{{ translations.features.security }}</h5>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="feature-card text-center p-4">
-                    <i class="fas fa-tree fa-2x text-gold mb-3"></i>
+                <div class="feature-card">
+                    <i class="fas fa-tree fa-3x"></i>
                     <h5>{{ translations.features.gardens }}</h5>
                 </div>
             </div>
@@ -195,65 +208,97 @@
 </section>
 
 <!-- Units -->
-<section class="py-5 bg-light">
+<section class="units-section">
     <div class="container">
-        <h2 class="section-title text-center mb-5">{{ translations.units.title }}</h2>
-        <div class="row g-4">
+        <h2 class="section-title">{{ translations.units.title }}</h2>
+        <div class="row g-5">
             <div class="col-md-6 col-lg-3">
                 <div class="unit-card">
-                    <div class="card h-100 luxury-card">
-                        <div class="card-body text-center">
-                            <h4 class="card-title">{{ translations.units.unit_1_1 }}</h4>
+                    <div class="luxury-card">
+                        <div class="unit-content">
+                            <h4 class="unit-title">{{ translations.units.unit_1_1 }}</h4>
                             <p class="unit-size">65-85 {{ translations.units.size_range }}</p>
-                            <p class="unit-price">{{ translations.units.from }} ₺2,500,000</p>
-                            <a href="#lead-form" class="btn btn-outline-luxury">
-                                {{ translations.units.cta_plans }}
-                            </a>
+                            <div class="unit-price">{{ translations.units.from }} ₺2,500,000</div>
+                            <ul class="unit-features">
+                                <li>Stunning Bosphorus Views</li>
+                                <li>Premium Location</li>
+                                <li>Modern Amenities</li>
+                            </ul>
+                            <div class="unit-cta">
+                                <a href="#lead-form" class="btn btn-luxury">
+                                    {{ translations.units.cta_plans }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="unit-card">
-                    <div class="card h-100 luxury-card">
-                        <div class="card-body text-center">
-                            <h4 class="card-title">{{ translations.units.unit_2_1 }}</h4>
+                    <div class="luxury-card">
+                        <div class="unit-content">
+                            <h4 class="unit-title">{{ translations.units.unit_2_1 }}</h4>
                             <p class="unit-size">95-120 {{ translations.units.size_range }}</p>
-                            <p class="unit-price">{{ translations.units.from }} ₺3,800,000</p>
-                            <a href="#lead-form" class="btn btn-outline-luxury">
-                                {{ translations.units.cta_plans }}
-                            </a>
+                            <div class="unit-price">{{ translations.units.from }} ₺3,800,000</div>
+                            <ul class="unit-features">
+                                <li>Spacious Layout</li>
+                                <li>Master Suite</li>
+                                <li>Private Balcony</li>
+                                <li>Premium Finishes</li>
+                            </ul>
+                            <div class="unit-cta">
+                                <a href="#lead-form" class="btn btn-luxury">
+                                    {{ translations.units.cta_plans }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="unit-card">
-                    <div class="card h-100 luxury-card">
-                        <div class="card-body text-center">
-                            <h4 class="card-title">{{ translations.units.unit_3_1 }}</h4>
+                    <div class="luxury-card">
+                        <div class="unit-content">
+                            <h4 class="unit-title">{{ translations.units.unit_3_1 }}</h4>
                             <p class="unit-size">140-170 {{ translations.units.size_range }}</p>
-                            <p class="unit-price">{{ translations.units.from }} ₺5,200,000</p>
-                            <a href="#lead-form" class="btn btn-outline-luxury">
-                                {{ translations.units.cta_plans }}
-                            </a>
+                            <div class="unit-price">{{ translations.units.from }} ₺5,200,000</div>
+                            <ul class="unit-features">
+                                <li>Family-Sized Living</li>
+                                <li>Multiple Bedrooms</li>
+                                <li>Large Terrace</li>
+                                <li>Study Room</li>
+                                <li>Luxury Kitchen</li>
+                            </ul>
+                            <div class="unit-cta">
+                                <a href="#lead-form" class="btn btn-luxury">
+                                    {{ translations.units.cta_plans }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="unit-card">
-                    <div class="card h-100 luxury-card featured-unit">
-                        <div class="card-body text-center">
-                            <span class="badge bg-gold text-dark position-absolute top-0 start-50 translate-middle px-3 py-2">
-                                Premium
-                            </span>
-                            <h4 class="card-title">{{ translations.units.unit_4_1 }}</h4>
+                <div class="unit-card featured-unit">
+                    <div class="luxury-card">
+                        <div class="unit-badge">Premium</div>
+                        <div class="unit-content">
+                            <h4 class="unit-title">{{ translations.units.unit_4_1 }}</h4>
                             <p class="unit-size">200-250 {{ translations.units.size_range }}</p>
-                            <p class="unit-price">{{ translations.units.from }} ₺8,500,000</p>
-                            <a href="#lead-form" class="btn btn-luxury">
-                                {{ translations.units.cta_plans }}
-                            </a>
+                            <div class="unit-price">{{ translations.units.from }} ₺8,500,000</div>
+                            <ul class="unit-features">
+                                <li>Penthouse Level</li>
+                                <li>360° Views</li>
+                                <li>Private Elevator</li>
+                                <li>Rooftop Terrace</li>
+                                <li>Premium Concierge</li>
+                                <li>Smart Home Systems</li>
+                            </ul>
+                            <div class="unit-cta">
+                                <a href="#lead-form" class="btn btn-luxury">
+                                    {{ translations.units.cta_plans }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
