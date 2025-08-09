@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Beylerbeyi Boğaz Rezidansları - Lüks Yatırım Fırsatı",
+    "description": "Boğaz manzaralı lüks konutlarda yaşam. Beylerbeyi'de prestijli yatırım fırsatı. Şimdi rezervasyon yaptırın."
+  },
+  "navigation": {
+    "phone": "+90 212 555 0123",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "headline": "Beylerbeyi'nde Boğaz'a Komşu Lüks Yaşam",
+    "subheadline": "İstanbul'un en prestijli lokasyonunda, Boğaz manzaralı lüks rezidanslarda yaşamın ayrıcalığını keşfedin.",
+    "cta_brochure": "Broşürü İndir",
+    "cta_callback": "Sizi Arayalım",
+    "trust_badge": "Sınırlı Sayıda Unit"
+  },
+  "quick_form": {
+    "title": "Hemen Bilgi Alın",
+    "name": "Adınız Soyadınız",
+    "phone": "Telefon Numaranız",
+    "language": "Dil Tercihiniz",
+    "submit": "Bilgi Talep Et"
+  },
+  "value_props": {
+    "title": "Neden Beylerbeyi?",
+    "waterfront": {
+      "title": "Boğaz Kıyısı",
+      "desc": "Doğrudan Boğaz manzarası"
+    },
+    "architecture": {
+      "title": "Mimari Mükemmellik",
+      "desc": "Dünya standartlarında tasarım"
+    },
+    "investment": {
+      "title": "Yatırım Değeri",
+      "desc": "Yüksek getiri potansiyeli"
+    },
+    "developer": {
+      "title": "Güvenilir Geliştirici",
+      "desc": "40+ yıllık deneyim"
+    }
+  },
+  "features": {
+    "title": "Premium Özellikler",
+    "smart_home": "Akıllı Ev Sistemi",
+    "concierge": "Concierge Hizmeti",
+    "parking": "Özel Otopark",
+    "spa": "Spa & Wellness",
+    "security": "7/24 Güvenlik",
+    "gardens": "Peyzaj Bahçeleri"
+  },
+  "units": {
+    "title": "Daire Tipleri & Özellikler",
+    "from": "Dan itibaren",
+    "unit_1_1": "1+1 Daireler",
+    "unit_2_1": "2+1 Daireler", 
+    "unit_3_1": "3+1 Daireler",
+    "unit_4_1": "4+1 Dubleks",
+    "size_range": "m² - m²",
+    "cta_plans": "Planları Gör"
+  },
+  "location": {
+    "title": "Konum & Erişim",
+    "description": "Beylerbeyi'nin tarihi dokusunda, şehrin merkezine kolay erişimle premium yaşam.",
+    "access_times": {
+      "pier": "Üsküdar İskelesine 5 dk",
+      "bridge": "15 Temmuz Köprüsü'ne 10 dk", 
+      "bagdat": "Bağdat Caddesi'ne 20 dk"
+    }
+  },
+  "investment": {
+    "title": "Yatırım & Finansman",
+    "starting_price": "Fiyatlar FROM_PRICE_TRY TL'den başlıyor",
+    "payment_plan": "Esnek Ödeme Seçenekleri",
+    "rental_yield": "Yıllık %8-12 Kira Getirisi",
+    "citizenship": "Vatandaşlık İmkanı",
+    "cta_investment": "Yatırım Teklifi Al"
+  },
+  "testimonials": {
+    "title": "Müşteri Görüşleri",
+    "testimonial_1": "Boğaz manzarası hayallerimizi aştı. Mükemmel bir yatırım.",
+    "testimonial_2": "Kalite ve servis standartları çok yüksek.",
+    "testimonial_3": "Konum olarak İstanbul'un en iyisi."
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "q1": "Ödeme planı nasıl?",
+    "a1": "Esnek ödeme seçenekleri mevcuttur. %30 peşin, kalan tutar 24 aya kadar taksitlendirilebilir.",
+    "q2": "Teslim tarihi ne zaman?",
+    "a2": "Proje DELIVERY_QUARTER_YEAR tarihinde teslim edilecektir.",
+    "q3": "Vatandaşlık için uygun mu?",
+    "a3": "Evet, 400.000 USD üzeri daireler vatandaşlık için uygundur.",
+    "q4": "Otopark dahil mi?",
+    "a4": "Her daireye 1 kapalı otopark dahildir.",
+    "q5": "Yönetim gideri ne kadar?",
+    "a5": "Aylık yönetim gideri m²'ye göre hesaplanır, ortalama 8-12 TL/m²."
+  },
+  "lead_form": {
+    "title": "Detaylı Bilgi & Rezervasyon",
+    "name": "Ad Soyad",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "whatsapp_optin": "WhatsApp ile iletişim kurulabilir",
+    "language_pref": "Dil Tercihi",
+    "unit_interest": "İlgilendiğiniz Daire Tipi",
+    "budget_range": "Bütçe Aralığınız",
+    "timeline": "Ne Zaman Almayı Planlıyorsunuz",
+    "best_call_time": "En Uygun Arama Zamanı",
+    "marketing_consent": "Pazarlama iletişimlerini kabul ediyorum",
+    "kvkk_consent": "KVKK metnini okudum ve kabul ediyorum",
+    "submit": "Gönder",
+    "success_title": "Teşekkürler!",
+    "success_message": "Uzmanlarımız en kısa sürede sizinle iletişime geçecek.",
+    "whatsapp_button": "WhatsApp ile Mesaj At",
+    "brochure_button": "Broşürü İndir"
+  },
+  "footer": {
+    "company": "DEVELOPER_NAME",
+    "address": "İstanbul, Türkiye",
+    "phone": "+90 212 555 0123",
+    "email": "info@example.com",
+    "kvkk": "KVKK Metni",
+    "privacy": "Gizlilik Politikası"
+  },
+  "languages": {
+    "tr": "Türkçe",
+    "en": "English", 
+    "ar": "العربية"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Beylerbeyi Bosphorus Residences - Luxury Investment Opportunity",
+    "description": "Luxury living with Bosphorus views. Prestigious investment opportunity in Beylerbeyi. Reserve now."
+  },
+  "navigation": {
+    "phone": "+90 212 555 0123",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "headline": "Bosphorus-Side Living in Beylerbeyi",
+    "subheadline": "Discover the privilege of luxury living in Bosphorus-view residences, in Istanbul's most prestigious location.",
+    "cta_brochure": "Download Brochure",
+    "cta_callback": "Request Call Back",
+    "trust_badge": "Limited Units Available"
+  },
+  "quick_form": {
+    "title": "Get Information Now",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "language": "Language Preference",
+    "submit": "Request Information"
+  },
+  "value_props": {
+    "title": "Why Beylerbeyi?",
+    "waterfront": {
+      "title": "Bosphorus Waterfront",
+      "desc": "Direct Bosphorus views"
+    },
+    "architecture": {
+      "title": "Architectural Excellence",
+      "desc": "World-class design standards"
+    },
+    "investment": {
+      "title": "Investment Value",
+      "desc": "High return potential"
+    },
+    "developer": {
+      "title": "Trusted Developer",
+      "desc": "40+ years of experience"
+    }
+  },
+  "features": {
+    "title": "Premium Features",
+    "smart_home": "Smart Home System",
+    "concierge": "Concierge Service",
+    "parking": "Private Parking",
+    "spa": "Spa & Wellness",
+    "security": "24/7 Security",
+    "gardens": "Landscaped Gardens"
+  },
+  "units": {
+    "title": "Unit Types & Features",
+    "from": "Starting from",
+    "unit_1_1": "1+1 Apartments",
+    "unit_2_1": "2+1 Apartments",
+    "unit_3_1": "3+1 Apartments", 
+    "unit_4_1": "4+1 Duplex",
+    "size_range": "sqm - sqm",
+    "cta_plans": "View Floor Plans"
+  },
+  "location": {
+    "title": "Location & Access",
+    "description": "Premium living in Beylerbeyi's historic fabric with easy access to city center.",
+    "access_times": {
+      "pier": "5 min to Üsküdar Pier",
+      "bridge": "10 min to July 15th Bridge",
+      "bagdat": "20 min to Bağdat Avenue"
+    }
+  },
+  "investment": {
+    "title": "Investment & Financing",
+    "starting_price": "Prices starting from FROM_PRICE_TRY TL",
+    "payment_plan": "Flexible Payment Options",
+    "rental_yield": "8-12% Annual Rental Yield",
+    "citizenship": "Citizenship Opportunity",
+    "cta_investment": "Get Investment Offer"
+  },
+  "testimonials": {
+    "title": "Client Reviews",
+    "testimonial_1": "The Bosphorus view exceeded our dreams. Perfect investment.",
+    "testimonial_2": "Quality and service standards are very high.",
+    "testimonial_3": "The best location in Istanbul."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "What is the payment plan?",
+    "a1": "Flexible payment options available. 30% down payment, remaining amount can be installmented up to 24 months.",
+    "q2": "When is the delivery date?",
+    "a2": "The project will be delivered in DELIVERY_QUARTER_YEAR.",
+    "q3": "Is it suitable for citizenship?",
+    "a3": "Yes, apartments over 400,000 USD are suitable for citizenship.",
+    "q4": "Is parking included?",
+    "a4": "Each apartment includes 1 covered parking space.",
+    "q5": "What is the management fee?",
+    "a5": "Monthly management fee is calculated per sqm, average 8-12 TL/sqm."
+  },
+  "lead_form": {
+    "title": "Detailed Information & Reservation",
+    "name": "Full Name",
+    "phone": "Phone",
+    "email": "Email",
+    "whatsapp_optin": "Contact via WhatsApp is acceptable",
+    "language_pref": "Language Preference",
+    "unit_interest": "Unit Type of Interest",
+    "budget_range": "Budget Range",
+    "timeline": "When Do You Plan to Purchase",
+    "best_call_time": "Best Time to Call",
+    "marketing_consent": "I accept marketing communications",
+    "kvkk_consent": "I have read and accept the privacy policy",
+    "submit": "Submit",
+    "success_title": "Thank You!",
+    "success_message": "Our specialists will contact you shortly.",
+    "whatsapp_button": "Message on WhatsApp",
+    "brochure_button": "Download Brochure"
+  },
+  "footer": {
+    "company": "DEVELOPER_NAME",
+    "address": "Istanbul, Turkey",
+    "phone": "+90 212 555 0123",
+    "email": "info@example.com",
+    "kvkk": "Privacy Policy",
+    "privacy": "Privacy Policy"
+  },
+  "languages": {
+    "tr": "Türkçe",
+    "en": "English",
+    "ar": "العربية"
+  }
+}

@@ -1,0 +1,683 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Top Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top luxury-nav">
+    <div class="container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            {% for lang in supported_languages %}
+                <a href="{{ url_for('index', lang=lang) }}" 
+                   class="lang-link {% if lang == current_lang %}active{% endif %}">
+                    {{ translations.languages[lang] }}
+                </a>
+            {% endfor %}
+        </div>
+        
+        <div class="ms-auto d-flex align-items-center">
+            <a href="tel:{{ translations.navigation.phone }}" class="btn btn-outline-gold me-3">
+                <i class="fas fa-phone me-2"></i>{{ translations.navigation.phone }}
+            </a>
+            <a href="https://wa.me/905321234567?text=Beylerbeyi%20Residences%20hakkında%20bilgi%20almak%20istiyorum" 
+               class="btn btn-success" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i>{{ translations.navigation.whatsapp }}
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section position-relative">
+    <div class="hero-background">
+        <img src="{{ url_for('static', filename='images/placeholder.svg') }}" 
+             alt="Bosphorus View" class="hero-image w-100 h-100 object-cover">
+        <div class="hero-overlay"></div>
+    </div>
+    
+    <div class="container hero-content">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-8">
+                <div class="hero-text">
+                    <h1 class="display-3 mb-4 luxury-headline">
+                        {{ translations.hero.headline }}
+                    </h1>
+                    <p class="lead mb-5 hero-subtitle">
+                        {{ translations.hero.subheadline }}
+                    </p>
+                    
+                    <div class="hero-ctas mb-5">
+                        <a href="#lead-form" class="btn btn-luxury btn-lg me-3 mb-3">
+                            <i class="fas fa-download me-2"></i>{{ translations.hero.cta_brochure }}
+                        </a>
+                        <button type="button" class="btn btn-outline-luxury btn-lg mb-3" 
+                                data-bs-toggle="modal" data-bs-target="#callbackModal">
+                            <i class="fas fa-phone me-2"></i>{{ translations.hero.cta_callback }}
+                        </button>
+                    </div>
+                    
+                    <div class="trust-badges">
+                        <span class="badge bg-gold text-dark px-4 py-2">
+                            <i class="fas fa-star me-2"></i>{{ translations.hero.trust_badge }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="quick-form-card">
+                    <div class="card luxury-card">
+                        <div class="card-body p-4">
+                            <h3 class="card-title mb-4">{{ translations.quick_form.title }}</h3>
+                            <form method="POST" action="{{ url_for('submit_lead') }}" class="quick-form">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control luxury-input" 
+                                           name="name" placeholder="{{ translations.quick_form.name }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control luxury-input" 
+                                           name="phone" placeholder="{{ translations.quick_form.phone }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select luxury-input" name="language">
+                                        {% for lang in supported_languages %}
+                                        <option value="{{ lang }}" {% if lang == current_lang %}selected{% endif %}>
+                                            {{ translations.languages[lang] }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" name="kvkk_consent" id="quickKvkk" required>
+                                    <label class="form-check-label small" for="quickKvkk">
+                                        {{ translations.lead_form.kvkk_consent }}
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-luxury w-100">
+                                    {{ translations.quick_form.submit }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Value Propositions -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">{{ translations.value_props.title }}</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="value-prop text-center">
+                    <div class="value-icon mb-3">
+                        <i class="fas fa-water fa-3x text-luxury"></i>
+                    </div>
+                    <h4>{{ translations.value_props.waterfront.title }}</h4>
+                    <p>{{ translations.value_props.waterfront.desc }}</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="value-prop text-center">
+                    <div class="value-icon mb-3">
+                        <i class="fas fa-building fa-3x text-luxury"></i>
+                    </div>
+                    <h4>{{ translations.value_props.architecture.title }}</h4>
+                    <p>{{ translations.value_props.architecture.desc }}</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="value-prop text-center">
+                    <div class="value-icon mb-3">
+                        <i class="fas fa-chart-line fa-3x text-luxury"></i>
+                    </div>
+                    <h4>{{ translations.value_props.investment.title }}</h4>
+                    <p>{{ translations.value_props.investment.desc }}</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="value-prop text-center">
+                    <div class="value-icon mb-3">
+                        <i class="fas fa-award fa-3x text-luxury"></i>
+                    </div>
+                    <h4>{{ translations.value_props.developer.title }}</h4>
+                    <p>{{ translations.value_props.developer.desc }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">{{ translations.features.title }}</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card text-center p-4">
+                    <i class="fas fa-home fa-2x text-gold mb-3"></i>
+                    <h5>{{ translations.features.smart_home }}</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card text-center p-4">
+                    <i class="fas fa-concierge-bell fa-2x text-gold mb-3"></i>
+                    <h5>{{ translations.features.concierge }}</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card text-center p-4">
+                    <i class="fas fa-car fa-2x text-gold mb-3"></i>
+                    <h5>{{ translations.features.parking }}</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card text-center p-4">
+                    <i class="fas fa-spa fa-2x text-gold mb-3"></i>
+                    <h5>{{ translations.features.spa }}</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card text-center p-4">
+                    <i class="fas fa-shield-alt fa-2x text-gold mb-3"></i>
+                    <h5>{{ translations.features.security }}</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card text-center p-4">
+                    <i class="fas fa-tree fa-2x text-gold mb-3"></i>
+                    <h5>{{ translations.features.gardens }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Units -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">{{ translations.units.title }}</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="unit-card">
+                    <div class="card h-100 luxury-card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ translations.units.unit_1_1 }}</h4>
+                            <p class="unit-size">65-85 {{ translations.units.size_range }}</p>
+                            <p class="unit-price">{{ translations.units.from }} ₺2,500,000</p>
+                            <a href="#lead-form" class="btn btn-outline-luxury">
+                                {{ translations.units.cta_plans }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="unit-card">
+                    <div class="card h-100 luxury-card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ translations.units.unit_2_1 }}</h4>
+                            <p class="unit-size">95-120 {{ translations.units.size_range }}</p>
+                            <p class="unit-price">{{ translations.units.from }} ₺3,800,000</p>
+                            <a href="#lead-form" class="btn btn-outline-luxury">
+                                {{ translations.units.cta_plans }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="unit-card">
+                    <div class="card h-100 luxury-card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ translations.units.unit_3_1 }}</h4>
+                            <p class="unit-size">140-170 {{ translations.units.size_range }}</p>
+                            <p class="unit-price">{{ translations.units.from }} ₺5,200,000</p>
+                            <a href="#lead-form" class="btn btn-outline-luxury">
+                                {{ translations.units.cta_plans }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="unit-card">
+                    <div class="card h-100 luxury-card featured-unit">
+                        <div class="card-body text-center">
+                            <span class="badge bg-gold text-dark position-absolute top-0 start-50 translate-middle px-3 py-2">
+                                Premium
+                            </span>
+                            <h4 class="card-title">{{ translations.units.unit_4_1 }}</h4>
+                            <p class="unit-size">200-250 {{ translations.units.size_range }}</p>
+                            <p class="unit-price">{{ translations.units.from }} ₺8,500,000</p>
+                            <a href="#lead-form" class="btn btn-luxury">
+                                {{ translations.units.cta_plans }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Location -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title mb-4">{{ translations.location.title }}</h2>
+                <p class="lead mb-4">{{ translations.location.description }}</p>
+                
+                <div class="access-times">
+                    <div class="access-item d-flex align-items-center mb-3">
+                        <i class="fas fa-ship text-luxury me-3"></i>
+                        <span>{{ translations.location.access_times.pier }}</span>
+                    </div>
+                    <div class="access-item d-flex align-items-center mb-3">
+                        <i class="fas fa-bridge text-luxury me-3"></i>
+                        <span>{{ translations.location.access_times.bridge }}</span>
+                    </div>
+                    <div class="access-item d-flex align-items-center mb-3">
+                        <i class="fas fa-shopping-bag text-luxury me-3"></i>
+                        <span>{{ translations.location.access_times.bagdat }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="map-container">
+                    {% if GOOGLE_MAPS_API_KEY %}
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.5234!2d29.0387!3d41.0369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAyJzEzLjAiTiAyOcKwMDInMTkuMyJF!5e0!3m2!1sen!2str!4v1234567890"
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                    {% else %}
+                    <div class="map-placeholder d-flex align-items-center justify-content-center bg-light" style="height: 400px;">
+                        <div class="text-center">
+                            <i class="fas fa-map-marker-alt fa-3x text-muted mb-3"></i>
+                            <p class="text-muted">Beylerbeyi, İstanbul</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Investment -->
+<section class="py-5 bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title text-gold mb-5">{{ translations.investment.title }}</h2>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="investment-feature">
+                            <h4 class="text-gold">{{ translations.investment.starting_price }}</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="investment-feature">
+                            <h5>{{ translations.investment.payment_plan }}</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="investment-feature">
+                            <h5>{{ translations.investment.rental_yield }}</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="investment-feature">
+                            <h5>{{ translations.investment.citizenship }}</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#lead-form" class="btn btn-gold btn-lg">
+                    <i class="fas fa-calculator me-2"></i>{{ translations.investment.cta_investment }}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">{{ translations.testimonials.title }}</h2>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="testimonial-card text-center p-4">
+                    <div class="stars mb-3">
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                    </div>
+                    <p class="mb-3">"{{ translations.testimonials.testimonial_1 }}"</p>
+                    <small class="text-muted">- M.K.</small>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="testimonial-card text-center p-4">
+                    <div class="stars mb-3">
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                    </div>
+                    <p class="mb-3">"{{ translations.testimonials.testimonial_2 }}"</p>
+                    <small class="text-muted">- A.S.</small>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="testimonial-card text-center p-4">
+                    <div class="stars mb-3">
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                    </div>
+                    <p class="mb-3">"{{ translations.testimonials.testimonial_3 }}"</p>
+                    <small class="text-muted">- R.T.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="section-title text-center mb-5">{{ translations.faq.title }}</h2>
+                
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                {{ translations.faq.q1 }}
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {{ translations.faq.a1 }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                {{ translations.faq.q2 }}
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {{ translations.faq.a2 }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                {{ translations.faq.q3 }}
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {{ translations.faq.a3 }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                {{ translations.faq.q4 }}
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {{ translations.faq.a4 }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                {{ translations.faq.q5 }}
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {{ translations.faq.a5 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lead Form -->
+<section class="py-5 bg-dark text-light" id="lead-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% if session.get('lead_submitted') %}
+                <!-- Success State -->
+                <div id="success" class="text-center">
+                    <div class="success-icon mb-4">
+                        <i class="fas fa-check-circle fa-5x text-gold"></i>
+                    </div>
+                    <h2 class="text-gold mb-4">{{ translations.lead_form.success_title }}</h2>
+                    <p class="lead mb-5">{{ translations.lead_form.success_message }}</p>
+                    
+                    <div class="success-actions">
+                        {% if session.get('lead_whatsapp') %}
+                        <a href="https://wa.me/905321234567?text=Merhaba,%20Beylerbeyi%20Residences%20için%20detaylı%20bilgi%20almak%20istiyorum." 
+                           class="btn btn-success btn-lg me-3 mb-3" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>{{ translations.lead_form.whatsapp_button }}
+                        </a>
+                        {% endif %}
+                        <a href="/brochures/beylerbeyi.pdf" class="btn btn-gold btn-lg mb-3" target="_blank">
+                            <i class="fas fa-download me-2"></i>{{ translations.lead_form.brochure_button }}
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                <!-- Lead Form -->
+                <h2 class="section-title text-center text-gold mb-5">{{ translations.lead_form.title }}</h2>
+                
+                <form method="POST" action="{{ url_for('submit_lead') }}" class="lead-form">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control luxury-input-dark" 
+                                   name="name" placeholder="{{ translations.lead_form.name }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="tel" class="form-control luxury-input-dark" 
+                                   name="phone" placeholder="{{ translations.lead_form.phone }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control luxury-input-dark" 
+                                   name="email" placeholder="{{ translations.lead_form.email }}">
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select luxury-input-dark" name="language">
+                                {% for lang in supported_languages %}
+                                <option value="{{ lang }}" {% if lang == current_lang %}selected{% endif %}>
+                                    {{ translations.languages[lang] }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select luxury-input-dark" name="unit_interest">
+                                <option value="">{{ translations.lead_form.unit_interest }}</option>
+                                <option value="1+1">{{ translations.units.unit_1_1 }}</option>
+                                <option value="2+1">{{ translations.units.unit_2_1 }}</option>
+                                <option value="3+1">{{ translations.units.unit_3_1 }}</option>
+                                <option value="4+1">{{ translations.units.unit_4_1 }}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select luxury-input-dark" name="budget_range">
+                                <option value="">{{ translations.lead_form.budget_range }}</option>
+                                <option value="2-4M">₺2-4 Milyon</option>
+                                <option value="4-6M">₺4-6 Milyon</option>
+                                <option value="6-10M">₺6-10 Milyon</option>
+                                <option value="10M+">₺10 Milyon+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select luxury-input-dark" name="timeline">
+                                <option value="">{{ translations.lead_form.timeline }}</option>
+                                <option value="immediate">Hemen</option>
+                                <option value="3months">3 Ay İçinde</option>
+                                <option value="6months">6 Ay İçinde</option>
+                                <option value="1year">1 Yıl İçinde</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select luxury-input-dark" name="best_call_time">
+                                <option value="">{{ translations.lead_form.best_call_time }}</option>
+                                <option value="morning">Sabah (09:00-12:00)</option>
+                                <option value="afternoon">Öğlen (12:00-17:00)</option>
+                                <option value="evening">Akşam (17:00-20:00)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-checks mt-4">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="whatsapp_optin" id="whatsappOpt">
+                            <label class="form-check-label" for="whatsappOpt">
+                                {{ translations.lead_form.whatsapp_optin }}
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="marketing_consent" id="marketingConsent">
+                            <label class="form-check-label" for="marketingConsent">
+                                {{ translations.lead_form.marketing_consent }}
+                            </label>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" name="kvkk_consent" id="kvkkConsent" required>
+                            <label class="form-check-label" for="kvkkConsent">
+                                {{ translations.lead_form.kvkk_consent }}
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-gold btn-lg px-5">
+                            <i class="fas fa-paper-plane me-2"></i>{{ translations.lead_form.submit }}
+                        </button>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h5 class="text-gold">{{ translations.footer.company }}</h5>
+                <p class="mb-1">{{ translations.footer.address }}</p>
+                <p class="mb-1">{{ translations.footer.phone }}</p>
+                <p>{{ translations.footer.email }}</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="#" class="text-light me-3">{{ translations.footer.kvkk }}</a>
+                <a href="#" class="text-light">{{ translations.footer.privacy }}</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Callback Modal -->
+<div class="modal fade" id="callbackModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-gold">
+                <h5 class="modal-title text-gold">{{ translations.hero.cta_callback }}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="callbackForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control luxury-input-dark" 
+                               id="callback_name" placeholder="{{ translations.lead_form.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control luxury-input-dark" 
+                               id="callback_phone" placeholder="{{ translations.lead_form.phone }}" required>
+                    </div>
+                    <input type="hidden" id="callback_language" value="{{ current_lang }}">
+                </form>
+            </div>
+            <div class="modal-footer border-gold">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-gold" onclick="submitCallback()">
+                    {{ translations.hero.cta_callback }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Sticky Bar -->
+<div class="mobile-sticky-bar d-lg-none">
+    <div class="container-fluid">
+        <div class="row g-0">
+            <div class="col-6">
+                <a href="tel:{{ translations.navigation.phone }}" class="btn btn-luxury w-100 rounded-0">
+                    <i class="fas fa-phone me-2"></i>Ara
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="https://wa.me/905321234567" class="btn btn-success w-100 rounded-0" target="_blank">
+                    <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+            {% for category, message in messages %}
+            <div class="toast {% if category == 'success' %}bg-success{% else %}bg-danger{% endif %} text-white" role="alert">
+                <div class="toast-body">
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+{% endblock %}

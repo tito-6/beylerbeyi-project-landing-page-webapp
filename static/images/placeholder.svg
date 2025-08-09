@@ -1,0 +1,62 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d2d2d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="water" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2c5aa0;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#1e3a6f;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#b8941f;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  
+  <!-- Bosphorus water -->
+  <path d="M0 400 Q300 350 600 380 Q900 410 1200 360 L1200 600 Q900 580 600 590 Q300 600 0 580 Z" fill="url(#water)"/>
+  
+  <!-- Istanbul skyline silhouette -->
+  <path d="M0 350 L50 340 L100 320 L150 310 L200 290 L250 285 L300 270 L350 260 L400 250 L450 240 L500 230 L550 220 L600 210 L650 220 L700 230 L750 240 L800 250 L850 260 L900 270 L950 280 L1000 290 L1050 300 L1100 320 L1150 340 L1200 350 L1200 800 L0 800 Z" fill="#000" opacity="0.3"/>
+  
+  <!-- Mosque minarets -->
+  <rect x="200" y="200" width="8" height="90" fill="#000" opacity="0.4"/>
+  <rect x="250" y="180" width="8" height="110" fill="#000" opacity="0.4"/>
+  <rect x="700" y="190" width="8" height="100" fill="#000" opacity="0.4"/>
+  <rect x="850" y="170" width="8" height="120" fill="#000" opacity="0.4"/>
+  
+  <!-- Mosque domes -->
+  <ellipse cx="225" cy="250" rx="15" ry="12" fill="#000" opacity="0.4"/>
+  <ellipse cx="275" cy="230" rx="18" ry="15" fill="#000" opacity="0.4"/>
+  <ellipse cx="725" cy="240" rx="16" ry="13" fill="#000" opacity="0.4"/>
+  <ellipse cx="875" cy="220" rx="20" ry="16" fill="#000" opacity="0.4"/>
+  
+  <!-- Golden hour light rays -->
+  <path d="M100 100 L150 200 L50 200 Z" fill="url(#gold)" opacity="0.2"/>
+  <path d="M300 80 L360 180 L240 180 Z" fill="url(#gold)" opacity="0.15"/>
+  <path d="M800 90 L870 190 L730 190 Z" fill="url(#gold)" opacity="0.1"/>
+  <path d="M1000 110 L1070 210 L930 210 Z" fill="url(#gold)" opacity="0.18"/>
+  
+  <!-- Luxury text overlay -->
+  <text x="600" y="400" text-anchor="middle" fill="#d4af37" font-family="serif" font-size="48" font-weight="300" opacity="0.8">
+    BEYLERBEYI
+  </text>
+  <text x="600" y="450" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="24" font-weight="200" opacity="0.7">
+    BOSPHORUS RESIDENCES
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="150" r="2" fill="#d4af37" opacity="0.6"/>
+  <circle cx="900" cy="120" r="1.5" fill="#d4af37" opacity="0.8"/>
+  <circle cx="1050" cy="180" r="2.5" fill="#d4af37" opacity="0.4"/>
+  <circle cx="300" cy="130" r="1.8" fill="#d4af37" opacity="0.7"/>
+  
+  <!-- Subtle texture overlay -->
+  <rect width="1200" height="800" fill="url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIwLjAzIj4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==)" opacity="0.3"/>
+</svg>
