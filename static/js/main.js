@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize components
     initializeHeroSlider();
     initializeForms();
-    initializeCallbackModal();
     initializeScrollEffects();
     
     // Smooth scrolling for anchor links
@@ -157,7 +156,7 @@ function initializeForms() {
             form.querySelectorAll('.invalid-feedback').forEach(el => el.remove());
 
             // Validate name
-            const nameInput = form.querySelector('input[name="name"], input[name="callback_name"]');
+            const nameInput = form.querySelector('input[name="name"]');
             if (nameInput) {
                 const name = nameInput.value.trim();
                 if (!name) {
@@ -167,7 +166,7 @@ function initializeForms() {
             }
 
             // Validate phone
-            const phoneInput = form.querySelector('input[name="phone"], input[name="callback_phone"]');
+            const phoneInput = form.querySelector('input[name="phone"]');
             if (phoneInput) {
                 const phone = phoneInput.value.trim();
                 if (!phone) {
@@ -234,74 +233,6 @@ function initializeToasts() {
     toasts.forEach(toast => {
         const bsToast = new bootstrap.Toast(toast);
         bsToast.show();
-    });
-}
-
-// Callback modal
-function initializeCallbackModal() {
-    const callbackModal = document.getElementById('callbackModal');
-    if (callbackModal) {
-        callbackModal.addEventListener('shown.bs.modal', function() {
-            document.getElementById('callback_name').focus();
-        });
-        
-        // Reset form when modal is hidden
-        callbackModal.addEventListener('hidden.bs.modal', function() {
-            document.getElementById('callbackForm').reset();
-        });
-    }
-}
-
-// Submit callback form
-function submitCallback() {
-    const name = document.getElementById('callback_name').value.trim();
-    const phone = document.getElementById('callback_phone').value.trim();
-    const language = document.getElementById('callback_language').value;
-    
-    if (!name || !phone) {
-        showToast('Lütfen tüm alanları doldurun', 'error');
-        return;
-    }
-    
-    const formData = new FormData();
-    formData.append('callback_name', name);
-    formData.append('callback_phone', phone);
-    formData.append('language', language);
-    
-    fetch('/callback-request', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            showToast('Geri arama talebiniz alındı. En kısa sürede arayacağız!', 'success');
-            bootstrap.Modal.getInstance(document.getElementById('callbackModal')).hide();
-            
-            // Track Facebook Pixel Lead conversion for callback
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead', {
-                    content_name: 'Callback Request',
-                    content_category: 'Real Estate Lead',
-                    value: 0,
-                    currency: 'USD'
-                });
-            }
-            
-            // Track Google Analytics conversion
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'callback_request', {
-                    event_category: 'engagement',
-                    event_label: 'header_callback'
-                });
-            }
-        } else {
-            showToast('Bir hata oluştu. Lütfen tekrar deneyin.', 'error');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        showToast('Bir hata oluştu. Lütfen tekrar deneyin.', 'error');
     });
 }
 
